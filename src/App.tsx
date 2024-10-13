@@ -45,14 +45,16 @@ function App() {
                 <h3 className="text-lg font-semibold mb-2">About Us</h3>
                 <p className="text-gray-400">We are not an official Pantone dealer, nor are we affiliated with or endorsed by Pantone. This site is not officially approved by Pantone. We offer a wide selection of industry and government color standards for reference purposes.</p>
               </div>
-              <div className="w-full md:w-1/3 mb-6 md:mb-0">
-                <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-                <ul className="text-gray-400">
-                  <li><Link to="/" className="hover:text-white">Home</Link></li>
-                  <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
-                  <li><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-                  <li><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
-                </ul>
+              <div className="w-full md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2 text-center">Quick Links</h3>
+                  <ul className="text-gray-400">
+                    <li className="text-center"><Link to="/" className="hover:text-white">Home</Link></li>
+                    <li className="text-center"><Link to="/blog" className="hover:text-white">Blog</Link></li>
+                    <li className="text-center"><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
+                    <li className="text-center"><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
+                  </ul>
+                </div>
               </div>
               <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
