@@ -43,7 +43,7 @@ function App() {
             <div className="flex flex-wrap justify-between">
               <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">About Us</h3>
-                <p className="text-gray-400">Discover the world of Pantone colors and their applications in design.</p>
+                <p className="text-gray-400">We are not an official Pantone dealer, nor are we affiliated with or endorsed by Pantone. This site is not officially approved by Pantone. We offer a wide selection of industry and government color standards for reference purposes.</p>
               </div>
               <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
@@ -56,11 +56,11 @@ function App() {
               </div>
               <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-                <p className="text-gray-400">Email: info@example.com</p>
+                <p className="text-gray-400">Email: info@pantonecolors.net</p>
               </div>
             </div>
             <div className="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Pantone Colors. All rights reserved.</p>
+              <p>&copy; 2024 Color Chart. All rights reserved. This site is not affiliated with or endorsed by Pantone.</p>
             </div>
           </div>
         </footer>
