@@ -49,10 +49,10 @@ function App() {
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-center">Quick Links</h3>
                   <ul className="text-gray-400">
-                    <li className="text-center"><Link to="/" className="hover:text-white">Home</Link></li>
-                    <li className="text-center"><Link to="/blog" className="hover:text-white">Blog</Link></li>
-                    <li className="text-center"><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-                    <li className="text-center"><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
+                    <li><Link to="/" className="hover:text-white">Home</Link></li>
+                    <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
+                    <li><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
+                    <li><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
                   </ul>
                 </div>
               </div>
