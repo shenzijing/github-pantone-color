@@ -21,8 +21,6 @@ function App() {
               <div className="flex space-x-4">
                 <Link to="/" className="text-gray-800 hover:text-blue-500">Home</Link>
                 <Link to="/blog" className="text-gray-800 hover:text-blue-500">Blog</Link>
-                <Link to="/privacy" className="text-gray-800 hover:text-blue-500">Privacy Policy</Link>
-                <Link to="/terms" className="text-gray-800 hover:text-blue-500">Terms of Service</Link>
               </div>
             </div>
           </div>
