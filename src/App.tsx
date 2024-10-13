@@ -41,11 +41,11 @@ function App() {
         <footer className="bg-gray-800 text-white py-8">
           <div className="container mx-auto px-6">
             <div className="flex flex-wrap justify-between">
-              <div className="w-full md:w-1/4 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">About Us</h3>
                 <p className="text-gray-400">Discover the world of Pantone colors and their applications in design.</p>
               </div>
-              <div className="w-full md:w-1/4 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
                 <ul className="text-gray-400">
                   <li><Link to="/" className="hover:text-white">Home</Link></li>
@@ -54,18 +54,9 @@ function App() {
                   <li><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
                 </ul>
               </div>
-              <div className="w-full md:w-1/4 mb-6 md:mb-0">
+              <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
                 <p className="text-gray-400">Email: info@example.com</p>
-                <p className="text-gray-400">Phone: (123) 456-7890</p>
-              </div>
-              <div className="w-full md:w-1/4">
-                <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
-                  <a href="#" className="text-gray-400 hover:text-white">Twitter</a>
-                  <a href="#" className="text-gray-400 hover:text-white">Instagram</a>
-                </div>
               </div>
             </div>
             <div className="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
