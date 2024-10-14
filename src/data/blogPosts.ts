@@ -1,6 +1,7 @@
 interface BlogPost {
   id: number;
   title: string;
+  slug: string;
   excerpt: string;
   content: string;
   date: string;
@@ -10,6 +11,7 @@ const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "Understanding Pantone Colors",
+    slug: "understanding-pantone-colors",
     excerpt: "Learn about the history and importance of Pantone colors in design...",
     content: `
       <p>Pantone colors have been a cornerstone of the design industry for decades, providing a standardized color matching system that ensures consistency across various mediums and applications. In this article, we'll explore the history, importance, and practical applications of Pantone colors in modern design.</p>
@@ -41,6 +43,7 @@ const blogPosts: BlogPost[] = [
   {
     id: 2,
     title: "Top 10 Pantone Colors for 2024",
+    slug: "top-10-pantone-colors-2024",
     excerpt: "Discover the trending Pantone colors that are shaping design this year...",
     content: `
       <p>As we dive into 2024, Pantone has once again set the tone for the year's color trends. These colors are expected to dominate fashion, graphic design, and interior decor. Let's explore the top 10 Pantone colors that are shaping design this year.</p>
@@ -82,6 +85,7 @@ const blogPosts: BlogPost[] = [
   {
     id: 3,
     title: "How to Use Pantone Colors in Your Designs",
+    slug: "using-pantone-colors-in-designs",
     excerpt: "Tips and tricks for incorporating Pantone colors effectively in your projects...",
     content: `
       <p>Pantone colors are a powerful tool in any designer's arsenal. When used effectively, they can elevate your designs and ensure consistency across various mediums. Here are some tips and tricks for incorporating Pantone colors into your projects.</p>

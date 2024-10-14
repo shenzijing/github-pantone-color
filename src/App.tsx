@@ -1,13 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PantoneColorGrid from './components/PantoneColorGrid';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import { Palette } from 'lucide-react';
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-100">
@@ -16,11 +20,12 @@ function App() {
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <Palette className="mr-2" size={24} />
-                <Link to="/" className="text-xl font-bold">Pantone Colors</Link>
+                <Link to="/" className="text-xl font-bold">{t('pantoneColors')}</Link>
               </div>
-              <div className="flex space-x-4">
-                <Link to="/" className="text-gray-800 hover:text-blue-500">Home</Link>
-                <Link to="/blog" className="text-gray-800 hover:text-blue-500">Blog</Link>
+              <div className="flex space-x-4 items-center">
+                <Link to="/" className="text-gray-800 hover:text-blue-500">{t('home')}</Link>
+                <Link to="/blog" className="text-gray-800 hover:text-blue-500">{t('blog')}</Link>
+                <LanguageSwitcher />
               </div>
             </div>
           </div>
@@ -30,7 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<PantoneColorGrid />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
           </Routes>
@@ -40,25 +45,25 @@ function App() {
           <div className="container mx-auto px-6">
             <div className="flex flex-wrap justify-between">
               <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">About Us</h3>
-                <p className="text-gray-400">We are not an official Pantone dealer, nor are we affiliated with or endorsed by Pantone. This site is not officially approved by Pantone. We offer a wide selection of industry and government color standards for reference purposes.</p>
+                <h3 className="text-lg font-semibold mb-2">{t('aboutUs')}</h3>
+                <p className="text-gray-400">{t('aboutUsDescription')}</p>
               </div>
               <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+                <h3 className="text-lg font-semibold mb-2">{t('quickLinks')}</h3>
                 <ul className="text-gray-400">
-                  <li><Link to="/" className="hover:text-white">Home</Link></li>
-                  <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
-                  <li><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-                  <li><Link to="/terms" className="hover:text-white">Terms of Service</Link></li>
+                  <li><Link to="/" className="hover:text-white">{t('home')}</Link></li>
+                  <li><Link to="/blog" className="hover:text-white">{t('blog')}</Link></li>
+                  <li><Link to="/privacy" className="hover:text-white">{t('privacyPolicy')}</Link></li>
+                  <li><Link to="/terms" className="hover:text-white">{t('termsOfService')}</Link></li>
                 </ul>
               </div>
               <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-                <p className="text-gray-400">Email: info@pantonecolors.net</p>
+                <h3 className="text-lg font-semibold mb-2">{t('contactUs')}</h3>
+                <p className="text-gray-400">{t('email')}: info@pantonecolors.net</p>
               </div>
             </div>
             <div className="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Color Chart. All rights reserved. This site is not affiliated with or endorsed by Pantone.</p>
+              <p>{t('copyright')}</p>
             </div>
           </div>
         </footer>
