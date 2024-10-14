@@ -43,13 +43,13 @@ function App() {
 
         <footer className="bg-gray-800 text-white py-8">
           <div className="container mx-auto px-6">
-            <div className="flex flex-wrap justify-between">
-              <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">{t('aboutUs')}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <h2 className="text-lg font-semibold mb-2">{t('aboutUs')}</h2>
                 <p className="text-gray-400">{t('aboutUsDescription')}</p>
               </div>
-              <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">{t('quickLinks')}</h3>
+              <div>
+                <h2 className="text-lg font-semibold mb-2">{t('quickLinks')}</h2>
                 <ul className="text-gray-400">
                   <li><Link to="/" className="hover:text-white">{t('home')}</Link></li>
                   <li><Link to="/blog" className="hover:text-white">{t('blog')}</Link></li>
@@ -57,8 +57,8 @@ function App() {
                   <li><Link to="/terms" className="hover:text-white">{t('termsOfService')}</Link></li>
                 </ul>
               </div>
-              <div className="w-full md:w-1/3 mb-6 md:mb-0 px-4">
-                <h3 className="text-lg font-semibold mb-2">{t('contactUs')}</h3>
+              <div>
+                <h2 className="text-lg font-semibold mb-2">{t('contactUs')}</h2>
                 <p className="text-gray-400">{t('email')}: info@pantonecolors.net</p>
               </div>
             </div>
