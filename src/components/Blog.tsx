@@ -13,7 +13,7 @@ const Blog: React.FC = () => {
             <p className="text-gray-600 mb-4">{post.excerpt}</p>
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-500">{post.date}</span>
-              <Link to={`/blog/${post.id}`} className="text-blue-500 hover:text-blue-600">Read more</Link>
+              <Link to={`/blog/${post.slug}`} className="text-blue-500 hover:text-blue-600">Read more</Link>
             </div>
           </div>
         ))}

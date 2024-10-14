@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import blogPosts from '../data/blogPosts';
 
 const BlogPost: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const post = blogPosts.find(post => post.id === parseInt(id || ''));
+  const { slug } = useParams<{ slug: string }>();
+  const post = blogPosts.find(post => post.slug === slug);
 
   if (!post) {
     return <div>Post not found</div>;
