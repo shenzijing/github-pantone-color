@@ -43,23 +43,12 @@ const PantoneColorGrid: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-8">Pantone Colors Chart</h1>
-
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-        <p className="text-lg text-center mb-4">
-          Welcome to our Pantone Colors Chart. This website provides a comprehensive collection of Pantone colors for your reference and inspiration.
-        </p>
-        <p className="text-sm text-gray-600 text-center">
-          <strong>Disclaimer:</strong> This website is not affiliated with, endorsed by, or officially connected to Pantone LLC. The Pantone colors displayed here are for reference purposes only and may not accurately represent official Pantone color standards.
-        </p>
-      </div>
-
-      <div className="mb-8">
+    <div>
+      <div className="mb-4 relative flex">
         <input
           type="text"
           placeholder="Search Pantone colors..."
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 pl-10 border rounded-l-md"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={handleKeyPress}
@@ -72,7 +61,6 @@ const PantoneColorGrid: React.FC = () => {
           Search
         </button>
       </div>
-
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
         {paginatedColors.map((color) => (
           <div
