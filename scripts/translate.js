@@ -1,13 +1,10 @@
 import { Translate } from '@google-cloud/translate/build/src/v2';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { readFileSync } from 'fs';
+import fs from 'fs/promises';
+import path from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const projectId = import.meta.env.VITE_GOOGLE_CLOUD_PROJECT_ID;
-const keyFilename = import.meta.env.VITE_GOOGLE_APPLICATION_CREDENTIALS;
+// 设置你的 Google Cloud 凭证
+const projectId = 'YOUR_PROJECT_ID';
+const keyFilename = 'path/to/your/keyfile.json';
 
 const translate = new Translate({ projectId, keyFilename });
 
