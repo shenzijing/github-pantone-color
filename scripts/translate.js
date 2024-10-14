@@ -1,16 +1,15 @@
-require('dotenv').config();
-const { Translate } = require('@google-cloud/translate').v2;
-const fs = require('fs').promises;
-const path = require('path');
+import { Translate } from '@google-cloud/translate/build/src/v2';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { readFileSync } from 'fs';
 
-// 配置Google Cloud认证
-const translate = new Translate({
-  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
-  credentials: {
-    client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  },
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const projectId = import.meta.env.VITE_GOOGLE_CLOUD_PROJECT_ID;
+const keyFilename = import.meta.env.VITE_GOOGLE_APPLICATION_CREDENTIALS;
+
+const translate = new Translate({ projectId, keyFilename });
 
 const sourceLanguage = 'en';
 const targetLanguages = ['es', 'fr', 'de', 'zh'];
