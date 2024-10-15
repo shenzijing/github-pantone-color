@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PantoneColorGrid from './components/PantoneColorGrid';
@@ -11,11 +11,28 @@ import { Palette } from 'lucide-react';
 
 function App() {
   const { t } = useTranslation();
+  const [isNavSticky, setIsNavSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsNavSticky(true);
+      } else {
+        setIsNavSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-md">
+        <nav className={`bg-white shadow-md ${isNavSticky ? 'fixed top-0 left-0 right-0 z-50' : ''}`}>
           <div className="container mx-auto px-6 py-3">
             <div className="flex justify-between items-center">
               <div className="flex items-center">
@@ -31,7 +48,7 @@ function App() {
           </div>
         </nav>
 
-        <main className="flex-grow container mx-auto p-8">
+        <main className={`flex-grow container mx-auto p-8 ${isNavSticky ? 'mt-16' : ''}`}>
           <Routes>
             <Route path="/" element={<PantoneColorGrid />} />
             <Route path="/blog" element={<Blog />} />
