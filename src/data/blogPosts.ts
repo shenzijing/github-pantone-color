@@ -1,11 +1,4 @@
-interface BlogPost {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  date: string;
-}
+import { BlogPost } from '../types';
 
 const blogPosts: BlogPost[] = [
   {
@@ -187,5 +180,8 @@ const blogPosts: BlogPost[] = [
     date: "2024-03-01"
   }
 ];
+
+// Sort blog posts by date in descending order (most recent first)
+blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export default blogPosts;

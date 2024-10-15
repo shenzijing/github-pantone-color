@@ -5,3 +5,12 @@ export interface PantoneColor {
   rgb: number[];
   cmyk: number[];
 }
+
+export interface BlogPost {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  date: string;
+}
