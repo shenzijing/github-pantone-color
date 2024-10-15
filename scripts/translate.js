@@ -1,12 +1,12 @@
-import { Translate } from '@google-cloud/translate/build/src/v2';
+import { v2 } from '@google-cloud/translate';
 import fs from 'fs/promises';
 import path from 'path';
 
-// 设置你的 Google Cloud 凭证
-const projectId = 'YOUR_PROJECT_ID';
-const keyFilename = 'path/to/your/keyfile.json';
+const keyFilename = path.join(process.cwd(), 'valued-crow-280207-d0020a2d6cd5.json');
 
-const translate = new Translate({ projectId, keyFilename });
+const translate = new v2.Translate({
+  keyFilename: keyFilename,
+});
 
 const sourceLanguage = 'en';
 const targetLanguages = ['es', 'fr', 'de', 'zh'];
