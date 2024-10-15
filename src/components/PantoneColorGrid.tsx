@@ -1,12 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import pantoneColors from '../data/pantoneColors';
 import { Search, Copy, Check } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 100;
 
 const PantoneColorGrid: React.FC = () => {
-  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
@@ -46,14 +44,10 @@ const PantoneColorGrid: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-4">{t('Pantone Colors Chart')}</h1>
-      <p className="mb-4">{t('websiteDescription')}</p>
-      <p className="mb-8 text-sm text-gray-600 italic">{t('disclaimer')}</p>
-
       <div className="mb-4 relative flex">
         <input
           type="text"
-          placeholder={t('searchPantoneColors')}
+          placeholder="Search Pantone colors..."
           className="w-full p-2 pl-10 border rounded-l-md"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -64,7 +58,7 @@ const PantoneColorGrid: React.FC = () => {
           onClick={handleSearch}
           className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition-colors"
         >
-          {t('search')}
+          Search
         </button>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
@@ -117,17 +111,17 @@ const PantoneColorGrid: React.FC = () => {
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
-          {t('previous')}
+          Previous
         </button>
         <span className="px-4 py-2">
-          {t('page')} {currentPage} {t('of')} {totalPages}
+          Page {currentPage} of {totalPages}
         </span>
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded-md ml-2 disabled:bg-gray-300"
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
-          {t('next')}
+          Next
         </button>
       </div>
     </div>
