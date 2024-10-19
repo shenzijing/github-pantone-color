@@ -10,7 +10,7 @@ const PrivacyPolicy = React.lazy(() => import('./components/PrivacyPolicy'));
 const TermsOfService = React.lazy(() => import('./components/TermsOfService'));
 
 function App({ children }: { children: React.ReactNode }) {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
   const [isNavSticky, setIsNavSticky] = React.useState(false);
 
   React.useEffect(() => {
@@ -28,6 +28,8 @@ function App({ children }: { children: React.ReactNode }) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  if (!ready) return <div>Loading translations...</div>;
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
