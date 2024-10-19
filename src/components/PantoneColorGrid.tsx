@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import pantoneColors from '../data/pantoneColors';
 import { Search, Copy, Check } from 'lucide-react';
 
-const ITEMS_PER_PAGE = 100;
+const ITEMS_PER_PAGE = 100; // Restored to 100 items per page
 
 const PantoneColorGrid: React.FC = () => {
   const { t } = useTranslation();
@@ -22,35 +22,37 @@ const PantoneColorGrid: React.FC = () => {
   }, [activeSearchTerm]);
 
   const totalPages = Math.ceil(filteredColors.length / ITEMS_PER_PAGE);
-  const paginatedColors = filteredColors.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const paginatedColors = useMemo(() => {
+    return filteredColors.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE
+    );
+  }, [filteredColors, currentPage]);
 
-  const copyToClipboard = (text: string, colorId: number) => {
+  const copyToClipboard = useCallback((text: string, colorId: number) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedColor(colorId.toString());
       setTimeout(() => setCopiedColor(null), 2000);
     });
-  };
+  }, []);
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     setActiveSearchTerm(searchTerm);
     setCurrentPage(1);
-  };
+  }, [searchTerm]);
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
-  };
+  }, [handleSearch]);
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-4">{t('pantoneColorsChart')}</h1>
-      <div className="mb-8">
-        <p className="mb-4">{t('pantoneDescription')} {t('pantoneDescription2')}</p>
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+      <h1 className="text-3xl font-bold mb-4">{t('pantoneColorsChart')}</h1>
+      <div className="mb-6">
+        <p className="mb-3">{t('pantoneDescription')} {t('pantoneDescription2')}</p>
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3" role="alert">
           <p>{t('disclaimerText')}</p>
         </div>
       </div>
@@ -71,17 +73,17 @@ const PantoneColorGrid: React.FC = () => {
           {t('search')}
         </button>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
         {paginatedColors.map((color) => (
           <div
             key={color.id}
             className="bg-white rounded-lg shadow-md overflow-hidden"
           >
             <div
-              className="h-24"
+              className="h-20"
               style={{ backgroundColor: color.hex }}
             ></div>
-            <div className="p-3">
+            <div className="p-2">
               <h3 className="font-semibold text-sm">{color.name}</h3>
               <div className="flex items-center justify-between mt-1">
                 <p className="text-xs text-gray-600">{color.hex}</p>
@@ -129,19 +131,19 @@ const PantoneColorGrid: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="mt-8 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2 disabled:bg-gray-300"
+          className="px-3 py-1 bg-blue-500 text-white rounded-md mr-2 disabled:bg-gray-300"
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
           {t('previous')}
         </button>
-        <span className="px-4 py-2">
+        <span className="px-3 py-1">
           {t('page')} {currentPage} {t('of')} {totalPages}
         </span>
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-md ml-2 disabled:bg-gray-300"
+          className="px-3 py-1 bg-blue-500 text-white rounded-md ml-2 disabled:bg-gray-300"
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
