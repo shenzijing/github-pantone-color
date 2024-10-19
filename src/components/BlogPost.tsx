@@ -10,12 +10,15 @@ const BlogPost: React.FC = () => {
     return <div>Post not found</div>;
   }
 
+  // 移除文章内容中的第一个 <h1> 标签及其内容
+  const contentWithoutFirstH1 = post.content.replace(/<h1>.*?<\/h1>/, '');
+
   return (
     <div className="max-w-4xl mx-auto">
       <Link to="/blog" className="text-blue-500 hover:text-blue-600 mb-4 inline-block">&larr; Back to Blog</Link>
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-500 mb-6">{post.date}</p>
-      <div className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+      <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+      <p className="text-gray-500 mb-8">{post.date}</p>
+      <div className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: contentWithoutFirstH1 }}></div>
     </div>
   );
 };
