@@ -50,7 +50,7 @@ function App() {
         </nav>
 
         <main className={`flex-grow container mx-auto p-4 ${isNavSticky ? 'mt-16' : ''}`}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
             <Routes>
               <Route path="/" element={<PantoneColorGrid />} />
               <Route path="/blog" element={<Blog />} />
