@@ -11,7 +11,7 @@ const PantoneColorGrid: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
   const [activeSearchTerm, setActiveSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const filteredColors = useMemo(() => {
     return pantoneColors.filter(color =>
@@ -49,13 +49,16 @@ const PantoneColorGrid: React.FC = () => {
   }, [handleSearch]);
 
   useEffect(() => {
-    setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 300);
+    }, 500);
 
     return () => clearTimeout(timer);
-  }, [activeSearchTerm, currentPage]);
+  }, []);
+
+  if (isLoading) {
+    return <div className="h-screen flex items-center justify-center">Loading Pantone Colors...</div>;
+  }
 
   return (
     <div>
@@ -83,68 +86,64 @@ const PantoneColorGrid: React.FC = () => {
           {t('search')}
         </button>
       </div>
-      {isLoading ? (
-        <div className="h-64 flex items-center justify-center">Loading Pantone Colors...</div>
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
-          {paginatedColors.map((color) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
+        {paginatedColors.map((color) => (
+          <div
+            key={color.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden"
+          >
             <div
-              key={color.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <div
-                className="h-20"
-                style={{ backgroundColor: color.hex }}
-              ></div>
-              <div className="p-2">
-                <h3 className="font-semibold text-sm">{color.name}</h3>
-                <div className="flex items-center justify-between mt-1">
-                  <p className="text-xs text-gray-600">{color.hex}</p>
-                  <button
-                    onClick={() => copyToClipboard(color.hex, color.id)}
-                    className="text-gray-500 hover:text-gray-700"
-                    title="Copy HEX"
-                  >
-                    {copiedColor === color.id.toString() ? (
-                      <Check size={14} className="text-green-500" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
-                <div className="flex items-center justify-between mt-1">
-                  <p className="text-xs text-gray-600">RGB: {color.rgb.join(', ')}</p>
-                  <button
-                    onClick={() => copyToClipboard(`rgb(${color.rgb.join(', ')})`, -color.id)}
-                    className="text-gray-500 hover:text-gray-700"
-                    title="Copy RGB"
-                  >
-                    {copiedColor === (-color.id).toString() ? (
-                      <Check size={14} className="text-green-500" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
-                <div className="flex items-center justify-between mt-1">
-                  <p className="text-xs text-gray-600">CMYK: {color.cmyk.join(', ')}</p>
-                  <button
-                    onClick={() => copyToClipboard(`cmyk(${color.cmyk.join(', ')})`, -color.id - 1000000)}
-                    className="text-gray-500 hover:text-gray-700"
-                    title="Copy CMYK"
-                  >
-                    {copiedColor === (-color.id - 1000000).toString() ? (
-                      <Check size={14} className="text-green-500" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
+              className="h-20"
+              style={{ backgroundColor: color.hex }}
+            ></div>
+            <div className="p-2">
+              <h3 className="font-semibold text-sm">{color.name}</h3>
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-xs text-gray-600">{color.hex}</p>
+                <button
+                  onClick={() => copyToClipboard(color.hex, color.id)}
+                  className="text-gray-500 hover:text-gray-700"
+                  title="Copy HEX"
+                >
+                  {copiedColor === color.id.toString() ? (
+                    <Check size={14} className="text-green-500" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
+              </div>
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-xs text-gray-600">RGB: {color.rgb.join(', ')}</p>
+                <button
+                  onClick={() => copyToClipboard(`rgb(${color.rgb.join(', ')})`, -color.id)}
+                  className="text-gray-500 hover:text-gray-700"
+                  title="Copy RGB"
+                >
+                  {copiedColor === (-color.id).toString() ? (
+                    <Check size={14} className="text-green-500" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
+              </div>
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-xs text-gray-600">CMYK: {color.cmyk.join(', ')}</p>
+                <button
+                  onClick={() => copyToClipboard(`cmyk(${color.cmyk.join(', ')})`, -color.id - 1000000)}
+                  className="text-gray-500 hover:text-gray-700"
+                  title="Copy CMYK"
+                >
+                  {copiedColor === (-color.id - 1000000).toString() ? (
+                    <Check size={14} className="text-green-500" />
+                  ) : (
+                    <Copy size={14} />
+                  )}
+                </button>
               </div>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
       <div className="mt-6 flex justify-center">
         <button
           className="px-3 py-1 bg-blue-500 text-white rounded-md mr-2 disabled:bg-gray-300"
@@ -164,6 +163,7 @@ const PantoneColorGrid: React.FC = () => {
           {t('next')}
         </button>
       </div>
+      {/* ... (rest of the component remains unchanged) */}
     </div>
   );
 };
