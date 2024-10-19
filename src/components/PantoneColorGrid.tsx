@@ -49,10 +49,8 @@ const PantoneColorGrid: React.FC = () => {
     <div>
       <h1 className="text-4xl font-bold mb-4">{t('pantoneColorsChart')}</h1>
       <div className="mb-8">
-        <p className="mb-4">{t('pantoneDescription')}</p>
-        <p className="mb-4">{t('pantoneDescription2')}</p>
+        <p className="mb-4">{t('pantoneDescription')} {t('pantoneDescription2')}</p>
         <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
-          <p className="font-bold">{t('disclaimer')}</p>
           <p>{t('disclaimerText')}</p>
         </div>
       </div>
@@ -154,7 +152,6 @@ const PantoneColorGrid: React.FC = () => {
         <section>
           <h2 className="text-2xl font-bold mb-4">{t('whatIsPantone')}</h2>
           <p className="mb-4">{t('pantoneDescription1')}</p>
-          <p className="mb-4">{t('pantoneDescription2')}</p>
         </section>
 
         <section>
