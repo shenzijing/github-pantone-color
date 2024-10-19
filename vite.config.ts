@@ -7,7 +7,6 @@ import ssr from 'vite-plugin-ssr/plugin';
 export default defineConfig({
   plugins: [
     react(),
-    ssr(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
@@ -29,23 +28,17 @@ export default defineConfig({
           }
         ]
       }
-    })
+    }),
+    ssr({ prerender: true })
   ],
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          i18n: ['i18next', 'react-i18next'],
-        }
+        manualChunks: undefined
       }
     },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
+    ssr: {
+      noExternal: ['react', 'react-dom', 'react-router-dom', 'i18next', 'react-i18next']
     }
   }
 });

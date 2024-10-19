@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --ssr src/entry-server.tsx && npm run generate",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "translate": "node scripts/translate.js",
-    "update-blog": "node scripts/updateBlog.js",
-    "generate": "vite-plugin-ssr prerender"
+    "update-blog": "node scripts/updateBlog.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
