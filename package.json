@@ -2,35 +2,22 @@
   "name": "pantone-colors-server",
   "version": "1.0.0",
   "description": "Server-side rendered Pantone Colors website",
-  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
     "dev": "vite",
     "build": "vite build",
-    "translate": "node scripts/translate.js",
-    "update-blog": "node scripts/updateBlog.js",
-    "vercel-build": "npm run translate && npm run update-blog && npm run build"
+    "preview": "vite preview",
+    "vercel-build": "vite build"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "i18next": "^23.10.1",
-    "i18next-fs-backend": "^2.3.1",
-    "i18next-http-middleware": "^3.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
-    "react-i18next": "^14.1.0"
+    "react-i18next": "^14.1.0",
+    "i18next": "^23.10.1"
   },
   "devDependencies": {
-    "@google-cloud/translate": "^8.5.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "nodemon": "^3.0.3",
     "vite": "^5.1.6"
-  },
-  "engines": {
-    "node": "20.x"
   }
 }
