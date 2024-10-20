@@ -1,4 +1,4 @@
-import '../globals.css';
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Layout } from '@/components/Layout';
@@ -12,15 +12,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params: { lang },
 }: {
   children: React.ReactNode;
-  params: { lang: string };
 }) {
   return (
-    <html lang={lang}>
+    <html lang="en">
       <body className={inter.className}>
-        <Layout lang={lang}>{children}</Layout>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
