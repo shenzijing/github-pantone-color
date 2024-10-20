@@ -35,7 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* Footer content remains unchanged */}
+      <footer className="bg-gray-100 mt-12">
+        <div className="container mx-auto px-4 py-8">
+          <p className="text-center text-gray-600">© 2024 Pantone Colors Chart. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
