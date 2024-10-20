@@ -1,21 +1,23 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import blogPosts from '../data/blogPosts';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { BlogPost as BlogPostType } from '../types';
 
-const BlogPost: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const post = blogPosts.find(post => post.slug === slug);
+interface BlogPostProps {
+  post: BlogPostType;
+}
 
-  if (!post) {
-    return <div>Post not found</div>;
-  }
+const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
+  const { t } = useTranslation('common');
 
-  // 移除文章内容中的第一个 <h1> 标签及其内容
+  // Remove the first <h1> tag and its content from the post content
   const contentWithoutFirstH1 = post.content.replace(/<h1>.*?<\/h1>/, '');
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Link to="/blog" className="text-blue-500 hover:text-blue-600 mb-4 inline-block">&larr; Back to Blog</Link>
+      <Link href="/blog" className="text-blue-500 hover:text-blue-600 mb-4 inline-block">
+        &larr; {t('backToBlog')}
+      </Link>
       <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
       <p className="text-gray-500 mb-8">{post.date}</p>
       <div className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: contentWithoutFirstH1 }}></div>
