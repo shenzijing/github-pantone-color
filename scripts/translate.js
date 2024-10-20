@@ -4,7 +4,7 @@ const { Translate } = require('@google-cloud/translate').v2;
 
 // Initialize the Google Translate API client
 const translate = new Translate({
-  keyFilename: path.join(__dirname, '..', 'google-translate-api-key.json'),
+  keyFilename: path.join(__dirname, '..', 'valued-crow-280207-9e053c159b3a.json'),
 });
 
 const i18n = {
@@ -33,27 +33,43 @@ async function translatePages() {
 async function translateUIStrings() {
   const translationsPath = path.join(__dirname, '..', 'lib', 'translations.ts');
   const translationsContent = fs.readFileSync(translationsPath, 'utf-8');
-  
-  // Use a more robust regex to extract the English strings
-  const englishStringsMatch = translationsContent.match(/en:\s*({[\s\S]*?}),?\s*\/\//);
-  
-  if (!englishStringsMatch) {
-    console.error('Could not find English strings in translations.ts');
+
+  // 使用更灵活的正则表达式来匹配整个 translations 对象
+  const translationsMatch = translationsContent.match(/export const translations = ({[\s\S]*?});/);
+
+  if (!translationsMatch) {
+    console.error('Could not find translations object in translations.ts');
     return;
   }
 
-  const englishStrings = eval(`(${englishStringsMatch[1]})`);
-  const translations = { en: englishStrings };
+  let translations;
+  try {
+    // 解析匹配到的 JSON 字符串
+    translations = JSON.parse(translationsMatch[1].replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": '));
+  } catch (error) {
+    console.error('Error parsing translations:', error);
+    return;
+  }
 
+  const englishStrings = translations.en;
+  if (!englishStrings) {
+    console.error('Could not find English strings in translations object');
+    return;
+  }
+
+  // 现在你可以使用 englishStrings 进行翻译
   for (const lang of i18n.locales) {
     if (lang === 'en') continue;
 
-    translations[lang] = {};
+    translations[lang] = translations[lang] || {};
     for (const [key, value] of Object.entries(englishStrings)) {
-      translations[lang][key] = await translateText(value, lang);
+      if (!translations[lang][key]) {
+        translations[lang][key] = await translateText(value, lang);
+      }
     }
   }
 
+  // 更新 translations.ts 文件
   const updatedTranslationsContent = `export const translations = ${JSON.stringify(translations, null, 2)};
 
 export type TranslationKey = keyof typeof translations.en;
