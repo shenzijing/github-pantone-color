@@ -1,0 +1,73 @@
+type Translations = {
+  [key: string]: {
+    [key: string]: string;
+  };
+};
+
+export const translations: Translations = {
+  en: {
+    home: "Home",
+    blog: "Blog",
+    search: "Search",
+    searchPlaceholder: "Search colors...",
+    aboutUs: "About Us",
+    aboutUsDescription: "We are passionate about colors and their impact on design and creativity.",
+    quickLinks: "Quick Links",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    copyright: "© 2023 Pantone Colors Chart. All rights reserved.",
+    contactUs: "Contact Us",
+  },
+  es: {
+    home: "Inicio",
+    blog: "Blog",
+    search: "Buscar",
+    searchPlaceholder: "Buscar colores...",
+    aboutUs: "Sobre Nosotros",
+    aboutUsDescription: "Nos apasionan los colores y su impacto en el diseño y la creatividad.",
+    quickLinks: "Enlaces Rápidos",
+    privacyPolicy: "Política de Privacidad",
+    termsOfService: "Términos de Servicio",
+    copyright: "© 2023 Tabla de Colores Pantone. Todos los derechos reservados.",
+    contactUs: "Contáctenos",
+  },
+  fr: {
+    home: "Accueil",
+    blog: "Blog",
+    search: "Rechercher",
+    searchPlaceholder: "Rechercher des couleurs...",
+    aboutUs: "À Propos de Nous",
+    aboutUsDescription: "Nous sommes passionnés par les couleurs et leur impact sur le design et la créativité.",
+    quickLinks: "Liens Rapides",
+    privacyPolicy: "Politique de Confidentialité",
+    termsOfService: "Conditions d'Utilisation",
+    copyright: "© 2023 Nuancier Pantone. Tous droits réservés.",
+    contactUs: "Contactez-nous",
+  },
+  de: {
+    home: "Startseite",
+    blog: "Blog",
+    search: "Suchen",
+    searchPlaceholder: "Farben suchen...",
+    aboutUs: "Über Uns",
+    aboutUsDescription: "Wir sind begeistert von Farben und ihrem Einfluss auf Design und Kreativität.",
+    quickLinks: "Schnelllinks",
+    privacyPolicy: "Datenschutzrichtlinie",
+    termsOfService: "Nutzungsbedingungen",
+    copyright: "© 2023 Pantone-Farbtabelle. Alle Rechte vorbehalten.",
+    contactUs: "Kontaktieren Sie uns",
+  },
+  it: {
+    home: "Home",
+    blog: "Blog",
+    search: "Cerca",
+    searchPlaceholder: "Cerca colori...",
+    aboutUs: "Chi Siamo",
+    aboutUsDescription: "Siamo appassionati di colori e del loro impatto sul design e sulla creatività.",
+    quickLinks: "Link Rapidi",
+    privacyPolicy: "Informativa sulla Privacy",
+    termsOfService: "Termini di Servizio",
+    copyright: "© 2023 Tabella Colori Pantone. Tutti i diritti riservati.",
+    contactUs: "Contattaci",
+  },
+};
