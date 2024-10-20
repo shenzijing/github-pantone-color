@@ -35,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <ul className="text-sm space-y-1">
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-service">Terms of Service</li>
+              <li><Link href="/terms-of-service">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
