@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import { PantoneColor } from '@/lib/colors';
-import { useTranslation } from '@/hooks/useTranslation';
 
 interface ColorGridProps {
   colors: PantoneColor[];
@@ -15,7 +14,6 @@ interface ColorGridProps {
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredColors, setFilteredColors] = useState<PantoneColor[]>(colors);
-  const { t } = useTranslation();
 
   const handleSearch = () => {
     const filtered = colors.filter(color =>
@@ -29,7 +27,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
       <div className="flex mb-4">
         <Input
           type="text"
-          placeholder={t('searchPlaceholder')}
+          placeholder="Search colors..."
           className="mr-2"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -37,7 +35,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
         />
         <Button onClick={handleSearch}>
           <Search className="h-4 w-4 mr-2" />
-          {t('search')}
+          Search
         </Button>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
