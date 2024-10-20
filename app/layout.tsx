@@ -1,31 +1,25 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { Layout } from '@/components/Layout';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: 'Pantone Colors Chart',
-  description: 'Explore the complete Pantone color chart with codes and swatches.',
-}
+export const metadata: Metadata = {
+  title: 'Pantone Colors Showcase',
+  description: 'A beautiful display of Pantone colors',
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow container mx-auto p-4">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <Layout>{children}</Layout>
       </body>
     </html>
-  )
+  );
 }

@@ -1,29 +1,51 @@
-import { BlogPost } from './types'
+interface BlogPost {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  content: string;
+}
 
 const blogPosts: BlogPost[] = [
   {
-    id: 1,
-    title: "Pantone Unveils 2024 Color of the Year: Peach Fuzz",
-    slug: "pantone-2024-color-of-the-year-peach-fuzz",
-    excerpt: "Discover the significance of Pantone's 2024 Color of the Year, Peach Fuzz, and its impact on design trends.",
-    content: `<p>The new year brings fresh trends, and one of the biggest announcements in design is the Pantone Color of the Year 2024. This year, the color authority has chosen PANTONE 13-1023 Peach Fuzz, a soft, warm peach shade that aims to bring a sense of comfort, cheerfulness, and well-being into homes, fashion, and everyday life.</p>`,
-    date: "2024-10-15"
+    title: "The Psychology of Color in Design",
+    slug: "psychology-of-color-in-design",
+    date: "June 1, 2023",
+    excerpt: "Colors play a crucial role in how we perceive and interact with designs. In this post, we explore the psychological impacts of different colors and how to use them effectively in your projects.",
+    content: `
+      <p>Colors have a profound impact on our emotions and behaviors. In the world of design, understanding color psychology is crucial for creating effective and engaging experiences. Let's explore some key aspects of color psychology in design:</p>
+      
+      <h2>Emotional Associations</h2>
+      <p>Different colors evoke different emotions and associations. For example:</p>
+      <ul>
+        <li><strong>Red</strong>: Excitement, passion, urgency</li>
+        <li><strong>Blue</strong>: Trust, calmness, stability</li>
+        <li><strong>Green</strong>: Nature, growth, harmony</li>
+        <li><strong>Yellow</strong>: Happiness, optimism, energy</li>
+        <li><strong>Purple</strong>: Luxury, creativity, mystery</li>
+      </ul>
+
+      <h2>Cultural Considerations</h2>
+      <p>It's important to note that color associations can vary across cultures. What might be positive in one culture could be negative in another. Always research your target audience's cultural context when choosing colors for global designs.</p>
+
+      <h2>Practical Applications</h2>
+      <p>Understanding color psychology can help in various design scenarios:</p>
+      <ul>
+        <li><strong>Branding</strong>: Choose colors that align with your brand personality and values.</li>
+        <li><strong>User Interface Design</strong>: Use colors to guide users' attention and actions.</li>
+        <li><strong>Marketing</strong>: Select colors that resonate with your target audience and campaign goals.</li>
+      </ul>
+
+      <p>By leveraging the power of color psychology, designers can create more impactful and effective designs that resonate with their audience on a deeper level.</p>
+    `,
   },
-  {
-    id: 2,
-    title: "How to Find Pantone Color: A Step-by-Step Guide",
-    slug: "how-to-find-pantone-color",
-    excerpt: "Learn how to effectively find and use Pantone colors in your design projects with this comprehensive guide.",
-    content: `<p>Finding the perfect Pantone color for your design projects can be crucial for maintaining brand consistency and ensuring accurate color reproduction across various media. This guide will walk you through several methods to find and use Pantone colors effectively in your design workflow.</p>`,
-    date: "2024-10-15"
-  },
-  // Add more blog posts as needed
-]
+  // Add more blog posts here...
+];
 
 export function getBlogPosts(): BlogPost[] {
-  return blogPosts
+  return blogPosts;
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug)
+  return blogPosts.find(post => post.slug === slug);
 }
