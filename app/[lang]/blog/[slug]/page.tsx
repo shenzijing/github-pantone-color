@@ -1,9 +1,5 @@
 import { notFound } from 'next/navigation';
-<<<<<<< HEAD
 import { getTranslatedBlogPost, getBlogPosts } from '@/lib/blog';
-=======
-import { getTranslatedBlogPost } from '@/lib/blog';
->>>>>>> 7cde95fd5fb83df98a42d6f40fbb37756b0a7ac0
 import { i18n } from '@/lib/i18n';
 
 export async function generateStaticParams() {
