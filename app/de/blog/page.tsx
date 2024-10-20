@@ -15,8 +15,8 @@ export default function BlogPage() {
                 {post.title}
               </Link>
             </h2>
-            <p className="text-gray-600 mb-4">{nachdatieren}</p>
-            <p className="text-gray-800 leading-relaxed mb-4">{post.auszug}</p>
+            <p className="text-gray-600 mb-4">{post.date}</p>
+            <p className="text-gray-800 leading-relaxed mb-4">{post.excerpt}</p>
             <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
               Mehr lesen
             </Link>
