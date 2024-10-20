@@ -35,7 +35,7 @@ export default async function Home() {
 
         <h2 className="text-2xl font-bold mt-8 mb-4">Preguntas frecuentes</h2>
         <ul className="list-disc pl-5 space-y-2">
-          <li><strong>¿Cuál es el propósito principal de los colores Pantone?</strong><br />Los colores Pantone garantizan que el mismo color se vea idéntico en distintos materiales, pantallas y productos, sin importar dónde o cómo se produzca.</li>
+          <li><strong>¿Cuál es el objetivo principal de los colores Pantone?</strong><br />Los colores Pantone garantizan que el mismo color se vea idéntico en distintos materiales, pantallas y productos, sin importar dónde o cómo se produzca.</li>
           <li><strong>¿Por qué se utilizan los colores Pantone en el branding?</strong><br />Los colores Pantone son populares en el ámbito del branding porque garantizan la coherencia. Una marca puede tener exactamente el mismo color en su logotipo, ya sea impreso en una tarjeta de presentación, un sitio web o una valla publicitaria.</li>
           <li><strong>¿Qué es el Pantone Matching System?</strong><br />El Pantone Matching System (PMS) es un sistema de combinación de colores estandarizado utilizado en todo el mundo, principalmente en diseño, moda, impresión y fabricación.</li>
           <li><strong>¿Con qué frecuencia Pantone elige un Color del Año?</strong><br />Pantone selecciona anualmente un nuevo Color del Año, que refleja las tendencias mundiales y las influencias culturales actuales.</li>
