@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { PantoneColor } from '@/lib/colors';
-import { Copy } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 
 interface ColorCardProps {
   color: PantoneColor;
@@ -32,7 +32,11 @@ export function ColorCard({ color }: ColorCardProps) {
             className={cn("h-6 w-6", textColor)}
             onClick={() => copyToClipboard(value, type)}
           >
-            <Copy className="h-3 w-3" />
+            {copied === type ? (
+              <Check className="h-3 w-3" />
+            ) : (
+              <Copy className="h-3 w-3" />
+            )}
           </Button>
         </TooltipTrigger>
         <TooltipContent>
