@@ -14,10 +14,3 @@ export interface BlogPost {
   content: string;
   date: string;
 }
-
-declare global {
-  interface Window {
-    initialI18nStore: any;
-    initialLanguage: string;
-  }
-}

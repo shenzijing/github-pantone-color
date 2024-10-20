@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import ssr from 'vite-plugin-ssr/plugin';
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -27,19 +27,23 @@ export default defineConfig({
           }
         ]
       }
-    }),
-    ssr({ prerender: true })
+    })
   ],
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          i18n: ['i18next', 'react-i18next'],
+        }
       }
     },
-    ssr: {
-      noExternal: ['react', 'react-dom', 'react-router-dom', 'i18next', 'react-i18next']
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
     }
   }
 });
