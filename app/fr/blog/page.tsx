@@ -12,11 +12,11 @@ export default function BlogPage() {
           <article key={post.slug} className="border-b pb-8">
             <h2 className="text-2xl font-semibold mb-2">
               <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition-colors">
-                {titre du post}
+                {post.title}
               </Link>
             </h2>
-            <p className="text-gray-600 mb-4">{postdater}</p>
-            <p className="text-gray-800 leading-relaxed mb-4">{article.extrait}</p>
+            <p className="text-gray-600 mb-4">{post.date}</p>
+            <p className="text-gray-800 leading-relaxed mb-4">{post.excerpt}</p>
             <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
               En savoir plus
             </Link>
