@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "Tabla de colores Pantone",
+    "description": "Explora nuestra colección completa de colores Pantone. Encuentra el tono perfecto para tus proyectos de diseño con nuestra tabla de colores fácil de usar que incluye valores HEX, RGB y CMYK.",
+    "whatIsPantone": "¿Qué es Pantone?",
+    "pantoneDescription": "Pantone es un sistema de combinación de colores que ayuda a los diseñadores y fabricantes a garantizar la consistencia del color en diferentes materiales y medios. El Pantone Matching System (PMS) se creó en 1963 para estandarizar la selección de colores. A cada color Pantone se le asigna un código único, lo que ayuda a eliminar la confusión al combinar tonos. Los colores Pantone se utilizan ampliamente en industrias como la moda, la impresión, el diseño de productos y la decoración de interiores.",
+    "howToUse": "Cómo utilizar los colores Pantone",
+    "howToUseDescription": "Los colores Pantone se utilizan de diversas formas en el diseño, la impresión y el branding. En el ámbito del diseño, los colores Pantone son fundamentales para la moda, el diseño de interiores e incluso las interfaces digitales. En el ámbito de la impresión, Pantone ayuda a crear colores vibrantes y precisos. En el ámbito del branding, las grandes marcas suelen elegir colores Pantone específicos para sus logotipos y materiales de marca para garantizar la coherencia a nivel mundial.",
+    "colorOfTheYear": "Color Pantone del año",
+    "colorOfTheYearDescription": "Cada año, Pantone selecciona un color del año que refleja las tendencias globales y los cambios culturales. Este color influye en sectores como la moda, el diseño de interiores y el marketing. Por ejemplo, el color del año 2024 es \"Peach Fuzz\", un tono cálido y acogedor que simboliza el optimismo y la creatividad.",
+    "colorSystems": "Pantone frente a CMYK frente a RGB frente a Hex",
+    "colorSystemsDescription": "Pantone es un sistema de combinación de colores estandarizado que se utiliza principalmente en impresión y desarrollo de marcas. CMYK (cian, magenta, amarillo y negro) se utiliza en la mayoría de los procesos de impresión. RGB (rojo, verde y azul) se utiliza para pantallas digitales. Los colores hexadecimales (Hex) son una versión del modelo RGB que se utiliza principalmente en diseño web.",
+    "faqs": "Preguntas frecuentes",
+    "faqsList": [
+      {
+        "question": "¿Cuál es el objetivo principal de los colores Pantone?",
+        "answer": "Los colores Pantone garantizan que el mismo color se vea idéntico en distintos materiales, pantallas y productos, sin importar dónde o cómo se produzca."
+      },
+      {
+        "question": "¿Por qué se utilizan los colores Pantone en el branding?",
+        "answer": "Los colores Pantone son populares en el ámbito del branding porque garantizan la coherencia. Una marca puede tener exactamente el mismo color en su logotipo, ya sea impreso en una tarjeta de presentación, un sitio web o una valla publicitaria."
+      },
+      {
+        "question": "¿Qué es el Pantone Matching System?",
+        "answer": "El Pantone Matching System (PMS) es un sistema de combinación de colores estandarizado utilizado en todo el mundo, principalmente en diseño, moda, impresión y fabricación."
+      },
+      {
+        "question": "¿Con qué frecuencia Pantone elige un Color del Año?",
+        "answer": "Pantone selecciona anualmente un nuevo Color del Año, que refleja las tendencias mundiales y las influencias culturales actuales."
+      },
+      {
+        "question": "¿Puedo utilizar colores Pantone en el diseño web?",
+        "answer": "Los colores Pantone no suelen utilizarse en el diseño web porque los colores web suelen estar en formato RGB o hexadecimal. Sin embargo, los diseñadores a veces hacen referencia a los colores Pantone para combinar los elementos web con la imagen física de la marca."
+      }
+    ],
+    "disclaimer": "Descargo de responsabilidad",
+    "disclaimerText": "La tabla de colores Pantone que se proporciona en este sitio web es solo para fines de referencia. Si bien nos esforzamos por lograr la precisión, la representación digital de los colores puede variar según la configuración de la pantalla. Para obtener una combinación de colores precisa, consulte las guías y estándares de colores oficiales de Pantone."
+  },
+  "layout": {
+    "logoAlt": "Logotipo de colores Pantone",
+    "title": "Tabla de colores Pantone",
+    "home": "Hogar",
+    "blog": "Blog",
+    "aboutUs": "Sobre nosotros",
+    "aboutUsDescription": "Nos apasionan los colores y su impacto en el diseño y la creatividad.",
+    "quickLinks": "Enlaces rápidos",
+    "privacyPolicy": "política de privacidad",
+    "termsOfService": "Condiciones de servicio",
+    "copyright": "© 2023 Pantone Colors Chart. Todos los derechos reservados.",
+    "contactUs": "Contáctenos"
+  }
+}
