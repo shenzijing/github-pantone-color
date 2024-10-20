@@ -1,5 +1,12 @@
 import { notFound } from 'next/navigation';
-import { getBlogPost } from '@/lib/blog';
+import { getBlogPost, getBlogPosts } from '@/lib/blog';
+
+export async function generateStaticParams() {
+  const posts = getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const post = getBlogPost(params.slug);
