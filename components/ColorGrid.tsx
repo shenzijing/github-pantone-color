@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import { ColorCard } from '@/components/ColorCard';
@@ -13,9 +13,9 @@ interface ColorGridProps {
 }
 
 export function ColorGrid({ colors }: ColorGridProps) {
-  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredColors, setFilteredColors] = useState<PantoneColor[]>(colors);
+  const { t } = useTranslation();
 
   const handleSearch = () => {
     const filtered = colors.filter(color =>

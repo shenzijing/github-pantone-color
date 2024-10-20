@@ -4,7 +4,7 @@ const { Translate } = require('@google-cloud/translate').v2;
 
 // Initialize the Google Translate API client
 const translate = new Translate({
-  keyFilename: path.join(__dirname, '..', 'valued-crow-280207-9e053c159b3a.json'),
+  keyFilename: path.join(__dirname, '..', 'google-translate-api-key.json'),
 });
 
 const i18n = {
@@ -33,10 +33,10 @@ async function translatePages() {
 async function translateUIStrings() {
   const translationsPath = path.join(__dirname, '..', 'lib', 'translations.ts');
   const translationsContent = fs.readFileSync(translationsPath, 'utf-8');
-
+  
   // Use a more robust regex to extract the English strings
   const englishStringsMatch = translationsContent.match(/en:\s*({[\s\S]*?}),?\s*\/\//);
-
+  
   if (!englishStringsMatch) {
     console.error('Could not find English strings in translations.ts');
     return;

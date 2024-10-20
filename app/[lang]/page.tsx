@@ -1,15 +1,15 @@
 import { ColorGrid } from '@/components/ColorGrid';
 import { getPantoneColors } from '@/lib/colors';
 import { i18n } from '@/lib/i18n';
-import { useTranslation } from '@/hooks/useTranslation';
+import { getTranslation } from '@/lib/translations';
 
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
 }
 
-export default async function Home() {
+export default async function Home({ params }: { params: { lang: string } }) {
   const colors = await getPantoneColors();
-  const { t } = useTranslation();
+  const t = (key: string) => getTranslation(params.lang, key);
 
   return (
     <div className="container mx-auto px-4 py-8">

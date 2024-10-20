@@ -2,8 +2,14 @@ import { useParams } from 'next/navigation';
 import { getTranslation, TranslationKey } from '@/lib/translations';
 
 export function useTranslation() {
-  const params = useParams();
-  const lang = params?.lang as string || 'en';
+  let lang = 'en';
+
+  try {
+    const params = useParams();
+    lang = (params?.lang as string) || 'en';
+  } catch (error) {
+    console.warn('useParams hook failed, falling back to default language');
+  }
 
   const t = (key: TranslationKey) => getTranslation(lang, key);
 
