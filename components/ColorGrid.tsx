@@ -5,15 +5,19 @@ import { ColorCard } from '@/components/ColorCard';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
-import { PantoneColor } from '@/lib/colors';
+
+interface Color {
+  name: string;
+  hex: string;
+}
 
 interface ColorGridProps {
-  colors: PantoneColor[];
+  colors: Color[];
 }
 
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredColors, setFilteredColors] = useState<PantoneColor[]>(colors);
+  const [filteredColors, setFilteredColors] = useState(colors);
 
   const handleSearch = () => {
     const filtered = colors.filter(color =>
@@ -40,7 +44,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {filteredColors.map((color) => (
-          <ColorCard key={color.id} color={color} />
+          <ColorCard key={color.name} color={color} />
         ))}
       </div>
     </div>
