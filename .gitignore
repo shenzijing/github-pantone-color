@@ -33,4 +33,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+<<<<<<< HEAD
 valued-crow-280207-d0020a2d6cd5.json
+=======
+<<<<<<< HEAD
+valued-crow-280207-d0020a2d6cd5.json
+=======
+<<<<<<< HEAD
+
+# Google API credentials
+valued-crow-280207-d0020a2d6cd5.json
+node_modules
+=======
+>>>>>>> parent of c3663b2 (多语言)
+>>>>>>> 7cde95fd5fb83df98a42d6f40fbb37756b0a7ac0
+>>>>>>> parent of 67bdaa3 (1020)

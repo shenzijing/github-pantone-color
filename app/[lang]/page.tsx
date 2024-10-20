@@ -1,13 +1,27 @@
+<<<<<<< HEAD
 import { ColorGrid } from '@/components/ColorGrid';
 import { getPantoneColors } from '@/lib/colors';
 import { i18n } from '@/lib/i18n';
+<<<<<<< HEAD
 import { getDictionary } from '@/lib/getDictionary';
+=======
+=======
+import { getPantoneColors } from '@/lib/colors';
+import { i18n } from '@/lib/i18n';
+import { HomeContent } from '@/components/HomeContent';
+>>>>>>> 7cde95fd5fb83df98a42d6f40fbb37756b0a7ac0
+>>>>>>> parent of 67bdaa3 (1020)
 
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
 }
 
+<<<<<<< HEAD
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+=======
+<<<<<<< HEAD
+export default async function Home() {
+>>>>>>> parent of 67bdaa3 (1020)
   const colors = await getPantoneColors();
   const dict = await getDictionary(lang);
 
@@ -46,4 +60,10 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
       </div>
     </div>
   );
+=======
+export default async function Home({ params }: { params: { lang: string } }) {
+  const colors = await getPantoneColors();
+
+  return <HomeContent colors={colors} />;
+>>>>>>> 7cde95fd5fb83df98a42d6f40fbb37756b0a7ac0
 }
