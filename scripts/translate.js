@@ -4,7 +4,7 @@ const { Translate } = require('@google-cloud/translate').v2;
 
 // Initialize the Google Translate API client
 const translate = new Translate({
-  keyFilename: path.join(__dirname, '..', 'google-translate-api-key.json'),
+  keyFilename: path.join(__dirname, '..', 'valued-crow-280207-d0020a2d6cd5.json'),
 });
 
 const i18n = {
@@ -25,7 +25,7 @@ async function translateText(text, targetLanguage) {
 async function translateBlogPosts() {
   const blogPath = path.join(__dirname, '..', 'lib', 'blog.ts');
   const blogContent = fs.readFileSync(blogPath, 'utf-8');
-  
+
   // Parse the blog posts from the file content
   const blogPostsMatch = blogContent.match(/const blogPosts: BlogPost\[] = \[([\s\S]*?)\];/);
   if (!blogPostsMatch) {

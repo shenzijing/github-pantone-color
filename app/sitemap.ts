@@ -8,14 +8,14 @@ export default async function sitemap() {
   const routes = ['', '/blog'].flatMap((route) =>
     i18n.locales.map((lang) => ({
       url: `${baseUrl}/${lang}${route}`,
-      lastModified: new Date().toISOString(),
+      lastModified: new Date('2024-10-20T07:59:47.324Z').toISOString(),
     }))
   );
 
   const blogRoutes = blogPosts.flatMap((post) =>
     i18n.locales.map((lang) => ({
       url: `${baseUrl}/${lang}/blog/${post.slug}`,
-      lastModified: new Date().toISOString(),
+      lastModified: new Date('2024-10-20T07:59:47.324Z').toISOString(),
     }))
   );
 
