@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "translate": "node scripts/translate.js"
+    "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@google-cloud/translate": "^7.2.2",
+=======
+>>>>>>> parent of 041be38 (多语言脚本)
     "@hookform/resolvers": "^3.9.0",
     "@next/swc-wasm-nodejs": "13.5.1",
     "@radix-ui/react-accordion": "^1.2.0",
