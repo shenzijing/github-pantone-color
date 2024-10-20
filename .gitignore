@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Google API credentials
+valued-crow-280207-d0020a2d6cd5.json
