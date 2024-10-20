@@ -1,9 +1,18 @@
-interface BlogPost {
+import { i18n } from '@/lib/i18n';
+
+export interface BlogPost {
   title: string;
   slug: string;
   date: string;
   excerpt: string;
   content: string;
+  translations: {
+    [key: string]: {
+      title: string;
+      excerpt: string;
+      content: string;
+    }
+  };
 }
 
 const blogPosts: BlogPost[] = [
@@ -38,6 +47,39 @@ const blogPosts: BlogPost[] = [
 
       <p>By leveraging the power of color psychology, designers can create more impactful and effective designs that resonate with their audience on a deeper level.</p>
     `,
+    translations: {
+      es: {
+        title: "La Psicología del Color en el Diseño",
+        excerpt: "Los colores juegan un papel crucial en cómo percibimos e interactuamos con los diseños. En este post, exploramos los impactos psicológicos de diferentes colores y cómo usarlos efectivamente en tus proyectos.",
+        content: `
+          <p>Los colores tienen un profundo impacto en nuestras emociones y comportamientos. En el mundo del diseño, entender la psicología del color es crucial para crear experiencias efectivas y atractivas. Exploremos algunos aspectos clave de la psicología del color en el diseño:</p>
+          
+          <h2>Asociaciones Emocionales</h2>
+          <p>Diferentes colores evocan diferentes emociones y asociaciones. Por ejemplo:</p>
+          <ul>
+            <li><strong>Rojo</strong>: Emoción, pasión, urgencia</li>
+            <li><strong>Azul</strong>: Confianza, calma, estabilidad</li>
+            <li><strong>Verde</strong>: Naturaleza, crecimiento, armonía</li>
+            <li><strong>Amarillo</strong>: Felicidad, optimismo, energía</li>
+            <li><strong>Púrpura</strong>: Lujo, creatividad, misterio</li>
+          </ul>
+
+          <h2>Consideraciones Culturales</h2>
+          <p>Es importante notar que las asociaciones de color pueden variar entre culturas. Lo que puede ser positivo en una cultura podría ser negativo en otra. Siempre investiga el contexto cultural de tu audiencia objetivo al elegir colores para diseños globales.</p>
+
+          <h2>Aplicaciones Prácticas</h2>
+          <p>Entender la psicología del color puede ayudar en varios escenarios de diseño:</p>
+          <ul>
+            <li><strong>Branding</strong>: Elige colores que se alineen con la personalidad y valores de tu marca.</li>
+            <li><strong>Diseño de Interfaz de Usuario</strong>: Usa colores para guiar la atención y acciones de los usuarios.</li>
+            <li><strong>Marketing</strong>: Selecciona colores que resuenen con tu audiencia objetivo y los objetivos de la campaña.</li>
+          </ul>
+
+          <p>Al aprovechar el poder de la psicología del color, los diseñadores pueden crear diseños más impactantes y efectivos que resuenen con su audiencia a un nivel más profundo.</p>
+        `
+      },
+      // Add more translations for other languages
+    }
   },
   // Add more blog posts here...
 ];
@@ -48,4 +90,21 @@ export function getBlogPosts(): BlogPost[] {
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find(post => post.slug === slug);
+}
+
+export function getTranslatedBlogPost(slug: string, lang: string): BlogPost | undefined {
+  const post = getBlogPost(slug);
+  if (!post) return undefined;
+
+  if (lang === 'en') return post;
+
+  const translation = post.translations[lang];
+  if (!translation) return post;
+
+  return {
+    ...post,
+    title: translation.title,
+    excerpt: translation.excerpt,
+    content: translation.content,
+  };
 }
