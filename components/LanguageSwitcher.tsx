@@ -1,26 +1,31 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { usePathname } from 'next/navigation'
+import { useState } from 'react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export default function LanguageSwitcher() {
-  const router = useRouter()
-  const pathname = usePathname()
+const languages = [
+  { code: 'en', name: 'English' },
+  { code: 'es', name: 'Español' },
+  { code: 'fr', name: 'Français' },
+  { code: 'de', name: 'Deutsch' },
+  { code: 'it', name: 'Italiano' },
+];
 
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const locale = e.target.value
-    router.push(pathname, { locale })
-  }
+export function LanguageSwitcher() {
+  const [language, setLanguage] = useState('en');
 
   return (
-    <select
-      onChange={changeLanguage}
-      className="bg-white border border-gray-300 rounded-md px-2 py-1 text-sm"
-    >
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-    </select>
-  )
+    <Select value={language} onValueChange={setLanguage}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select Language" />
+      </SelectTrigger>
+      <SelectContent>
+        {languages.map((lang) => (
+          <SelectItem key={lang.code} value={lang.code}>
+            {lang.name}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
 }
