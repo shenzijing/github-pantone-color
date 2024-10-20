@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
-import { useTranslation } from '@/hooks/useTranslation';
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts();
-  const { t } = useTranslation();
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8">{t('blogTitle')}</h1>
+      <h1 className="text-4xl font-bold mb-8">Blog zu Farbeinblicken</h1>
       <div className="space-y-12">
         {blogPosts.map((post) => (
           <article key={post.slug} className="border-b pb-8">
@@ -17,10 +15,10 @@ export default function BlogPage() {
                 {post.title}
               </Link>
             </h2>
-            <p className="text-gray-600 mb-4">{post.date}</p>
-            <p className="text-gray-800 leading-relaxed mb-4">{post.excerpt}</p>
+            <p className="text-gray-600 mb-4">{nachdatieren}</p>
+            <p className="text-gray-800 leading-relaxed mb-4">{post.auszug}</p>
             <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
-              {t('readMore')}
+              Mehr lesen
             </Link>
           </article>
         ))}
