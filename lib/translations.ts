@@ -5,11 +5,11 @@ export const translations = {
     "search": "Search",
     "searchPlaceholder": "Search colors...",
     "aboutUs": "About Us",
-    "aboutUsContent": "We are passionate about colors and their impact on design and creativity.",
+    "aboutUsContent": "We offer a comprehensive collection of Pantone colors for reference purposes. Our goal is to provide designers, artists, and color enthusiasts with a valuable resource for their creative projects.",
     "quickLinks": "Quick Links",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "copyright": "© 2023 Pantone Colors Chart. All rights reserved.",
+    "copyright": "© 2024 Pantone Colors Chart. All rights reserved.",
     "contactUs": "Contact Us",
     "pantoneColorsChart": "Pantone Colors Chart",
     "exploreColors": "Explore our comprehensive collection of Pantone colors. Find the perfect hue for your design projects with our easy-to-use color chart featuring HEX, RGB, and CMYK values.",
@@ -34,7 +34,7 @@ export const translations = {
     "faqWebDesignAnswer": "Pantone colors are typically not used for web design because web colors are usually in RGB or Hex. However, designers sometimes reference Pantone colors to match web elements to physical branding.",
     "disclaimer": "Disclaimer",
     "readMore": "Read more",
-    "disclaimerContent": "The Pantone Color Chart provided on this website is for reference purposes only. While we strive for accuracy, the digital representation of colors may vary depending on your display settings. For precise color matching, please refer to official Pantone color guides and standards.",
+    "disclaimerContent": "This site is not affiliated with or endorsed by Pantone LLC. Pantone® is a registered trademark of Pantone LLC. The color values provided here are for reference purposes only and may not be 100% accurate representations of official Pantone colors.",
     "colorInsightsBlog": "Color Insights Blog"
   },
   "es": {
