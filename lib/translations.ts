@@ -33,7 +33,8 @@ export const translations = {
     "faqWebDesign": "Can I use Pantone colors in web design?",
     "faqWebDesignAnswer": "Pantone colors are typically not used for web design because web colors are usually in RGB or Hex. However, designers sometimes reference Pantone colors to match web elements to physical branding.",
     "disclaimer": "Disclaimer",
-    "disclaimerContent": "The Pantone Color Chart provided on this website is for reference purposes only. While we strive for accuracy, the digital representation of colors may vary depending on your display settings. For precise color matching, please refer to official Pantone color guides and standards."
+    "disclaimerContent": "The Pantone Color Chart provided on this website is for reference purposes only. While we strive for accuracy, the digital representation of colors may vary depending on your display settings. For precise color matching, please refer to official Pantone color guides and standards.",
+    "colorInsightsBlog": "Color Insights Blog"
   },
   "es": {
     "home": "Hogar",
@@ -69,7 +70,8 @@ export const translations = {
     "faqWebDesign": "¿Puedo utilizar colores Pantone en el diseño web?",
     "faqWebDesignAnswer": "Los colores Pantone no suelen utilizarse en el diseño web porque los colores web suelen estar en formato RGB o hexadecimal. Sin embargo, los diseñadores a veces hacen referencia a los colores Pantone para combinar los elementos web con la imagen física de la marca.",
     "disclaimer": "Descargo de responsabilidad",
-    "disclaimerContent": "La tabla de colores Pantone que se proporciona en este sitio web es solo para fines de referencia. Si bien nos esforzamos por lograr la precisión, la representación digital de los colores puede variar según la configuración de la pantalla. Para obtener una combinación de colores precisa, consulte las guías y estándares de colores oficiales de Pantone."
+    "disclaimerContent": "La tabla de colores Pantone que se proporciona en este sitio web es solo para fines de referencia. Si bien nos esforzamos por lograr la precisión, la representación digital de los colores puede variar según la configuración de la pantalla. Para obtener una combinación de colores precisa, consulte las guías y estándares de colores oficiales de Pantone.",
+    "colorInsightsBlog": "Blog sobre información sobre el color"
   },
   "fr": {
     "home": "Maison",
@@ -105,7 +107,8 @@ export const translations = {
     "faqWebDesign": "Puis-je utiliser les couleurs Pantone dans la conception Web ?",
     "faqWebDesignAnswer": "Les couleurs Pantone ne sont généralement pas utilisées pour la conception Web, car elles sont généralement au format RVB ou Hex. Cependant, les concepteurs font parfois référence aux couleurs Pantone pour faire correspondre les éléments Web à l'image de marque physique.",
     "disclaimer": "Clause de non-responsabilité",
-    "disclaimerContent": "Le nuancier Pantone fourni sur ce site Web est fourni à titre de référence uniquement. Bien que nous nous efforcions d'être précis, la représentation numérique des couleurs peut varier en fonction de vos paramètres d'affichage. Pour une correspondance précise des couleurs, veuillez vous référer aux guides et normes de couleurs Pantone officiels."
+    "disclaimerContent": "Le nuancier Pantone fourni sur ce site Web est fourni à titre de référence uniquement. Bien que nous nous efforcions d'être précis, la représentation numérique des couleurs peut varier en fonction de vos paramètres d'affichage. Pour une correspondance précise des couleurs, veuillez vous référer aux guides et normes de couleurs Pantone officiels.",
+    "colorInsightsBlog": "Blog sur les couleurs"
   },
   "de": {
     "home": "Heim",
@@ -141,7 +144,8 @@ export const translations = {
     "faqWebDesign": "Kann ich Pantone-Farben im Webdesign verwenden?",
     "faqWebDesignAnswer": "Pantone-Farben werden normalerweise nicht für das Webdesign verwendet, da Webfarben normalerweise im RGB- oder Hex-Format vorliegen. Designer verwenden jedoch manchmal Pantone-Farben, um Webelemente an physische Marken anzupassen.",
     "disclaimer": "Haftungsausschluss",
-    "disclaimerContent": "Die auf dieser Website bereitgestellte Pantone-Farbkarte dient nur zu Referenzzwecken. Obwohl wir uns um Genauigkeit bemühen, kann die digitale Darstellung der Farben je nach Ihren Anzeigeeinstellungen variieren. Für eine genaue Farbabstimmung beachten Sie bitte die offiziellen Pantone-Farbführer und -Standards."
+    "disclaimerContent": "Die auf dieser Website bereitgestellte Pantone-Farbkarte dient nur zu Referenzzwecken. Obwohl wir uns um Genauigkeit bemühen, kann die digitale Darstellung der Farben je nach Ihren Anzeigeeinstellungen variieren. Für eine genaue Farbabstimmung beachten Sie bitte die offiziellen Pantone-Farbführer und -Standards.",
+    "colorInsightsBlog": "Blog zu Farbeinblicken"
   },
   "it": {
     "home": "Casa",
@@ -177,7 +181,8 @@ export const translations = {
     "faqWebDesign": "Posso usare i colori Pantone nel web design?",
     "faqWebDesignAnswer": "I colori Pantone in genere non vengono utilizzati per il web design perché i colori web sono solitamente in RGB o Hex. Tuttavia, i designer a volte fanno riferimento ai colori Pantone per abbinare gli elementi web al branding fisico.",
     "disclaimer": "Disclaimer",
-    "disclaimerContent": "La tabella dei colori Pantone fornita su questo sito Web è solo a scopo di riferimento. Sebbene ci impegniamo per la precisione, la rappresentazione digitale dei colori può variare a seconda delle impostazioni del display. Per una corrispondenza precisa dei colori, fare riferimento alle guide e agli standard ufficiali dei colori Pantone."
+    "disclaimerContent": "La tabella dei colori Pantone fornita su questo sito Web è solo a scopo di riferimento. Sebbene ci impegniamo per la precisione, la rappresentazione digitale dei colori può variare a seconda delle impostazioni del display. Per una corrispondenza precisa dei colori, fare riferimento alle guide e agli standard ufficiali dei colori Pantone.",
+    "colorInsightsBlog": "Blog sulle intuizioni sui colori"
   }
 };
 

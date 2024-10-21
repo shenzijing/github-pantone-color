@@ -27,7 +27,7 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
               <p className="text-gray-600 mb-4">{post.date}</p>
               <p className="text-gray-800 leading-relaxed mb-4">{translatedPost.excerpt}</p>
               <Link href={`/${params.lang}/blog/${post.slug}`} className="text-blue-600 hover:underline">
-                {t('readMore')}
+                {t('readMore') as string}
               </Link>
             </article>
           );

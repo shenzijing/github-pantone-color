@@ -100,6 +100,7 @@ async function translateUIStrings() {
     }
   }
 
+  // 确保 TranslationKey 类型被正确更新
   const updatedTranslationsContent = `export const translations = ${JSON.stringify(translations, null, 2)};
 
 export type TranslationKey = keyof typeof translations.en;
