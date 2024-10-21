@@ -3,9 +3,8 @@ import { getTranslatedBlogPost, getBlogPosts } from '@/lib/blog';
 import { i18n } from '@/lib/i18n';
 
 export async function generateStaticParams() {
-  const { locales } = i18n;
   const posts = getBlogPosts();
-  return locales.flatMap((lang) =>
+  return i18n.locales.flatMap((lang) =>
     posts.map((post) => ({
       lang,
       slug: post.slug,
@@ -28,3 +27,6 @@ export default function BlogPost({ params }: { params: { lang: string; slug: str
     </article>
   );
 }
+
+// This ensures the page is statically generated
+export const dynamic = 'force-static';

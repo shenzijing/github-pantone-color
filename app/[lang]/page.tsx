@@ -1,15 +1,15 @@
 import { ColorGrid } from '@/components/ColorGrid';
 import { getPantoneColors } from '@/lib/colors';
 import { i18n } from '@/lib/i18n';
-import { getTranslation, TranslationKey } from '@/lib/translations';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export function generateStaticParams() {
-  return i18n.locales.filter(lang => lang !== i18n.defaultLocale).map((lang) => ({ lang }));
+  return i18n.locales.map((lang) => ({ lang }));
 }
 
 export default async function Home({ params }: { params: { lang: string } }) {
   const colors = await getPantoneColors();
-  const t = (key: TranslationKey) => getTranslation(params.lang, key);
+  const { t } = useTranslation(params.lang);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -59,3 +59,6 @@ export default async function Home({ params }: { params: { lang: string } }) {
     </div>
   );
 }
+
+// This ensures the page is statically generated
+export const dynamic = 'force-static';

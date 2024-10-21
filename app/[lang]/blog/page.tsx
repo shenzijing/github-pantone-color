@@ -9,8 +9,8 @@ export function generateStaticParams() {
 
 export default function BlogPage({ params }: { params: { lang: string } }) {
   const blogPosts = getBlogPosts();
-  const { t, lang } = useTranslation();
-  const currentLang = params.lang || lang;
+  const { t } = useTranslation(params.lang);
+  const currentLang = params.lang;
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -21,13 +21,13 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
           return (
             <article key={post.slug} className="border-b pb-8">
               <h2 className="text-2xl font-semibold mb-2">
-                <Link href={`/${currentLang}/blog/${post.slug}/`} className="hover:text-blue-600 transition-colors">
+                <Link href={`/${currentLang}/blog/${post.slug}`} className="hover:text-blue-600 transition-colors">
                   {translatedPost.title}
                 </Link>
               </h2>
               <p className="text-gray-600 mb-4">{post.date}</p>
               <p className="text-gray-800 leading-relaxed mb-4">{translatedPost.excerpt}</p>
-              <Link href={`/${currentLang}/blog/${post.slug}/`} className="text-blue-600 hover:underline">
+              <Link href={`/${currentLang}/blog/${post.slug}`} className="text-blue-600 hover:underline">
                 {t('readMore')}
               </Link>
             </article>

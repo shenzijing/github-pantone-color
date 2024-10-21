@@ -9,13 +9,13 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { i18n } from '@/lib/i18n';
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { t } = useTranslation();
   const pathname = usePathname();
   const pathParts = pathname.split('/').filter(Boolean);
   const currentLang = i18n.locales.includes(pathParts[0]) ? pathParts[0] : i18n.defaultLocale;
+  const { t } = useTranslation(currentLang);
 
   const getLocalizedHref = (path: string) => {
-    return currentLang === i18n.defaultLocale ? path : `/${currentLang}${path}`;
+    return `/${currentLang}${path}`;
   };
 
   return (
