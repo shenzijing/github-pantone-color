@@ -46,12 +46,12 @@ async function translateBlogPosts() {
       if (lang === 'en') continue;
 
       if (!post.translations[lang]) {
-        post.translations[lang] = {
-          title: await translateText(post.title, lang),
-          excerpt: await translateText(post.excerpt, lang),
-          content: await translateText(post.content, lang),
-        };
+        post.translations[lang] = {};
       }
+
+      post.translations[lang].title = await translateText(post.title, lang);
+      post.translations[lang].excerpt = await translateText(post.excerpt, lang);
+      post.translations[lang].content = await translateText(post.content, lang);
     }
   }
 
@@ -65,7 +65,51 @@ async function translateBlogPosts() {
 }
 
 async function translateUIStrings() {
-  // ... (keep existing UI strings translation logic)
+  const translationsPath = path.join(__dirname, '..', 'lib', 'translations.ts');
+  const translationsContent = fs.readFileSync(translationsPath, 'utf-8');
+
+  const translationsMatch = translationsContent.match(/export const translations = ({[\s\S]*?});/);
+
+  if (!translationsMatch) {
+    console.error('Could not find translations object in translations.ts');
+    return;
+  }
+
+  let translations;
+  try {
+    translations = eval(`(${translationsMatch[1]})`);
+  } catch (error) {
+    console.error('Error parsing translations:', error);
+    return;
+  }
+
+  const englishStrings = translations.en;
+  if (!englishStrings) {
+    console.error('Could not find English strings in translations object');
+    return;
+  }
+
+  for (const lang of i18n.locales) {
+    if (lang === 'en') continue;
+
+    translations[lang] = translations[lang] || {};
+    for (const [key, value] of Object.entries(englishStrings)) {
+      if (!translations[lang][key]) {
+        translations[lang][key] = await translateText(value, lang);
+      }
+    }
+  }
+
+  const updatedTranslationsContent = `export const translations = ${JSON.stringify(translations, null, 2)};
+
+export type TranslationKey = keyof typeof translations.en;
+
+export function getTranslation(lang: string, key: TranslationKey): string {
+  return translations[lang as keyof typeof translations]?.[key] || translations.en[key];
+}`;
+
+  fs.writeFileSync(translationsPath, updatedTranslationsContent);
+  console.log('UI strings translated and updated.');
 }
 
 async function main() {
