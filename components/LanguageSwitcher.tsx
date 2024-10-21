@@ -7,24 +7,23 @@ import { i18n, getLanguageName } from '@/lib/i18n';
 export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
-  const currentLang = pathname.split('/')[1] || i18n.defaultLocale;
+  const pathParts = pathname.split('/').filter(Boolean);
+  const currentLang = i18n.locales.includes(pathParts[0]) ? pathParts[0] : i18n.defaultLocale;
 
   const handleLanguageChange = (newLang: string) => {
-    const pathParts = pathname.split('/').filter(Boolean);
     let newPathname;
 
-    if (pathParts[0] === currentLang) {
-      // If the current language is in the path, replace it
-      pathParts[0] = newLang;
-      newPathname = '/' + pathParts.join('/');
+    if (i18n.locales.includes(pathParts[0])) {
+      // If the current path includes a language code, replace it
+      newPathname = '/' + [newLang, ...pathParts.slice(1)].join('/');
     } else {
-      // If the current language is not in the path, add the new language
+      // If the current path doesn't include a language code, add it
       newPathname = `/${newLang}${pathname}`;
     }
 
     // If the new language is the default, remove it from the path
     if (newLang === i18n.defaultLocale) {
-      newPathname = newPathname.replace(`/${i18n.defaultLocale}`, '');
+      newPathname = '/' + pathParts.slice(1).join('/');
     }
 
     // Ensure there's always a leading slash
