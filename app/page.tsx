@@ -13,7 +13,7 @@ export default async function Home() {
         {t('exploreColors')}
       </p>
       <ColorGrid colors={colors} />
-      
+
       <div className="mt-12">
         <h2 className="text-3xl font-bold mb-4">{t('whatIsPantone')}</h2>
         <p className="mb-4">
