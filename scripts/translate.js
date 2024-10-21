@@ -34,7 +34,6 @@ async function translateUIStrings() {
   const translationsPath = path.join(__dirname, '..', 'lib', 'translations.ts');
   const translationsContent = fs.readFileSync(translationsPath, 'utf-8');
 
-  // 使用更灵活的正则表达式来匹配整个 translations 对象
   const translationsMatch = translationsContent.match(/export const translations = ({[\s\S]*?});/);
 
   if (!translationsMatch) {
@@ -44,8 +43,7 @@ async function translateUIStrings() {
 
   let translations;
   try {
-    // 解析匹配到的 JSON 字符串
-    translations = JSON.parse(translationsMatch[1].replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": '));
+    translations = eval(`(${translationsMatch[1]})`);
   } catch (error) {
     console.error('Error parsing translations:', error);
     return;
@@ -57,7 +55,6 @@ async function translateUIStrings() {
     return;
   }
 
-  // 现在你可以使用 englishStrings 进行翻译
   for (const lang of i18n.locales) {
     if (lang === 'en') continue;
 
@@ -69,7 +66,6 @@ async function translateUIStrings() {
     }
   }
 
-  // 更新 translations.ts 文件
   const updatedTranslationsContent = `export const translations = ${JSON.stringify(translations, null, 2)};
 
 export type TranslationKey = keyof typeof translations.en;

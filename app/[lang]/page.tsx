@@ -4,7 +4,7 @@ import { i18n } from '@/lib/i18n';
 import { getTranslation, TranslationKey } from '@/lib/translations';
 
 export function generateStaticParams() {
-  return i18n.locales.map((lang) => ({ lang }));
+  return i18n.locales.filter(lang => lang !== i18n.defaultLocale).map((lang) => ({ lang }));
 }
 
 export default async function Home({ params }: { params: { lang: string } }) {
@@ -18,8 +18,44 @@ export default async function Home({ params }: { params: { lang: string } }) {
         {t('exploreColors')}
       </p>
       <ColorGrid colors={colors} />
+      
+      <div className="mt-12">
+        <h2 className="text-3xl font-bold mb-4">{t('whatIsPantone')}</h2>
+        <p className="mb-4">
+          {t('pantoneDescription')}
+        </p>
 
-      {/* Rest of the content remains the same */}
+        <h2 className="text-2xl font-bold mt-8 mb-4">{t('howToUsePantone')}</h2>
+        <p className="mb-4">
+          {t('pantoneUsage')}
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">{t('pantoneColorOfTheYear')}</h2>
+        <p className="mb-4">
+          {t('colorOfTheYearDescription')}
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">{t('pantoneVsOthers')}</h2>
+        <p className="mb-4">
+          {t('colorSystemsComparison')}
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8 mb-4">{t('faqs')}</h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li><strong>{t('faqPurpose')}</strong><br />{t('faqPurposeAnswer')}</li>
+          <li><strong>{t('faqBranding')}</strong><br />{t('faqBrandingAnswer')}</li>
+          <li><strong>{t('faqPMS')}</strong><br />{t('faqPMSAnswer')}</li>
+          <li><strong>{t('faqColorOfYear')}</strong><br />{t('faqColorOfYearAnswer')}</li>
+          <li><strong>{t('faqWebDesign')}</strong><br />{t('faqWebDesignAnswer')}</li>
+        </ul>
+      </div>
+
+      <div className="mt-12 text-sm text-gray-600 border-t pt-4">
+        <h2 className="font-semibold mb-2">{t('disclaimer')}</h2>
+        <p>
+          {t('disclaimerContent')}
+        </p>
+      </div>
     </div>
   );
 }

@@ -10,8 +10,12 @@ export function LanguageSwitcher() {
   const currentLang = pathname.split('/')[1] || i18n.defaultLocale;
 
   const handleLanguageChange = (newLang: string) => {
-    const newPathname = pathname.replace(/^\/[a-z]{2}/, '');
-    router.push(`/${newLang}${newPathname}`);
+    let newPathname = pathname.replace(/^\/[a-z]{2}/, '');
+    if (newLang === i18n.defaultLocale) {
+      router.push(newPathname || '/');
+    } else {
+      router.push(`/${newLang}${newPathname}`);
+    }
   };
 
   return (
