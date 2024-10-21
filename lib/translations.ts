@@ -36,7 +36,6 @@ export const translations = {
     "readMore": "Read more",
     "disclaimerContent": "The Pantone Color Chart provided on this website is for reference purposes only. While we strive for accuracy, the digital representation of colors may vary depending on your display settings. For precise color matching, please refer to official Pantone color guides and standards.",
     "colorInsightsBlog": "Color Insights Blog"
-
   },
   "es": {
     "home": "Hogar",
