@@ -21,8 +21,8 @@ export function LanguageSwitcher() {
       newPathname = `/${newLang}${pathname}`;
     }
 
-    // If the new language is the default, remove it from the path
-    if (newLang === i18n.defaultLocale) {
+    // If the new language is English, remove the language code from the path
+    if (newLang === 'en') {
       newPathname = '/' + pathParts.slice(1).join('/');
     }
 

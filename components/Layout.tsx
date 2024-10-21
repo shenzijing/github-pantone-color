@@ -15,7 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation(currentLang);
 
   const getLocalizedHref = (path: string) => {
-    return `/${currentLang}${path}`;
+    return currentLang === 'en' ? path : `/${currentLang}${path}`;
   };
 
   return (
