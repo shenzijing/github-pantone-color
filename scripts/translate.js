@@ -22,6 +22,36 @@ async function translateText(text, targetLanguage) {
   }
 }
 
+async function translateHtml(html, targetLanguage) {
+  const cheerio = require('cheerio');
+  const $ = cheerio.load(html);
+
+  async function translateElement(element) {
+    if (element.children().length === 0) {
+      const text = $(element).text().trim();
+      if (text) {
+        const translatedText = await translateText(text, targetLanguage);
+        $(element).text(translatedText);
+      }
+    } else {
+      for (let child of element.contents()) {
+        if (child.type === 'text') {
+          const text = $(child).text().trim();
+          if (text) {
+            const translatedText = await translateText(text, targetLanguage);
+            $(child).replaceWith(translatedText);
+          }
+        } else if (child.type === 'tag') {
+          await translateElement($(child));
+        }
+      }
+    }
+  }
+
+  await translateElement($('body'));
+  return $('body').html();
+}
+
 async function translateBlogPosts() {
   const blogPostsPath = path.join(__dirname, '..', 'lib', 'blog.ts');
   const blogPostsContent = fs.readFileSync(blogPostsPath, 'utf-8');
@@ -51,7 +81,7 @@ async function translateBlogPosts() {
 
       post.translations[lang].title = await translateText(post.title, lang);
       post.translations[lang].excerpt = await translateText(post.excerpt, lang);
-      post.translations[lang].content = await translateText(post.content, lang);
+      post.translations[lang].content = await translateHtml(post.content, lang);
     }
   }
 
