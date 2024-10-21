@@ -23,34 +23,80 @@ async function translateText(text, targetLanguage) {
 }
 
 async function translateBlogPosts() {
-  // ... (keep existing blog post translation logic)
-}
+  const blogPostsPath = path.join(__dirname, '..', 'lib', 'blog.ts');
+  const blogPostsContent = fs.readFileSync(blogPostsPath, 'utf-8');
 
-async function translatePages() {
-  // ... (keep existing page translation logic)
+  const blogPostsMatch = blogPostsContent.match(/const blogPosts: BlogPost\[] = \[([\s\S]*?)\];/);
+
+  if (!blogPostsMatch) {
+    console.error('Could not find blogPosts array in blog.ts');
+    return;
+  }
+
+  let blogPosts;
+  try {
+    blogPosts = eval(`[${blogPostsMatch[1]}]`);
+  } catch (error) {
+    console.error('Error parsing blogPosts:', error);
+    return;
+  }
+
+  for (const post of blogPosts) {
+    for (const lang of i18n.locales) {
+      if (lang === 'en') continue;
+
+      if (!post.translations[lang]) {
+        post.translations[lang] = {};
+      }
+
+      post.translations[lang].title = await translateText(post.title, lang);
+      post.translations[lang].excerpt = await translateText(post.excerpt, lang);
+      post.translations[lang].content = await translateText(post.content, lang);
+    }
+  }
+
+  const updatedBlogPostsContent = blogPostsContent.replace(
+    /const blogPosts: BlogPost\[] = \[([\s\S]*?)\];/,
+    `const blogPosts: BlogPost[] = ${JSON.stringify(blogPosts, null, 2)};`
+  );
+
+  fs.writeFileSync(blogPostsPath, updatedBlogPostsContent);
+  console.log('Blog posts translated and updated.');
 }
 
 async function translateUIStrings() {
   const translationsPath = path.join(__dirname, '..', 'lib', 'translations.ts');
   const translationsContent = fs.readFileSync(translationsPath, 'utf-8');
 
-  // Use a more robust regex to extract the English strings
-  const englishStringsMatch = translationsContent.match(/en:\s*({[\s\S]*?}),?\s*\/\//);
+  const translationsMatch = translationsContent.match(/export const translations = ({[\s\S]*?});/);
 
-  if (!englishStringsMatch) {
-    console.error('Could not find English strings in translations.ts');
+  if (!translationsMatch) {
+    console.error('Could not find translations object in translations.ts');
     return;
   }
 
-  const englishStrings = eval(`(${englishStringsMatch[1]})`);
-  const translations = { en: englishStrings };
+  let translations;
+  try {
+    translations = eval(`(${translationsMatch[1]})`);
+  } catch (error) {
+    console.error('Error parsing translations:', error);
+    return;
+  }
+
+  const englishStrings = translations.en;
+  if (!englishStrings) {
+    console.error('Could not find English strings in translations object');
+    return;
+  }
 
   for (const lang of i18n.locales) {
     if (lang === 'en') continue;
 
-    translations[lang] = {};
+    translations[lang] = translations[lang] || {};
     for (const [key, value] of Object.entries(englishStrings)) {
-      translations[lang][key] = await translateText(value, lang);
+      if (!translations[lang][key]) {
+        translations[lang][key] = await translateText(value, lang);
+      }
     }
   }
 
@@ -66,16 +112,10 @@ export function getTranslation(lang: string, key: TranslationKey): string {
   console.log('UI strings translated and updated.');
 }
 
-async function updateSitemap() {
-  // ... (keep existing sitemap update logic)
-}
-
 async function main() {
   await translateBlogPosts();
-  await translatePages();
   await translateUIStrings();
-  await updateSitemap();
-  console.log('Translation and sitemap update completed.');
+  console.log('Translation completed.');
 }
 
 main().catch(console.error);
