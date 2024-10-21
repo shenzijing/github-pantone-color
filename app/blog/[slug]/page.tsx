@@ -28,3 +28,6 @@ export default function BlogPost({ params }: { params: { lang: string; slug: str
     </article>
   );
 }
+
+// This ensures the page is statically generated
+export const dynamic = 'force-static';

@@ -20,13 +20,13 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
           return (
             <article key={post.slug} className="border-b pb-8">
               <h2 className="text-2xl font-semibold mb-2">
-                <Link href={`/${params.lang}/blog/${post.slug}`} className="hover:text-blue-600 transition-colors">
+                <Link href={`/${params.lang}/blog/${post.slug}/`} className="hover:text-blue-600 transition-colors">
                   {translatedPost.title}
                 </Link>
               </h2>
               <p className="text-gray-600 mb-4">{post.date}</p>
               <p className="text-gray-800 leading-relaxed mb-4">{translatedPost.excerpt}</p>
-              <Link href={`/${params.lang}/blog/${post.slug}`} className="text-blue-600 hover:underline">
+              <Link href={`/${params.lang}/blog/${post.slug}/`} className="text-blue-600 hover:underline">
                 {t('readMore')}
               </Link>
             </article>
@@ -36,3 +36,6 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
     </div>
   );
 }
+
+// This ensures the page is statically generated
+export const dynamic = 'force-static';
