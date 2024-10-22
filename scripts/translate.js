@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Translate } = require('@google-cloud/translate').v2;
+const cheerio = require('cheerio');
 
 // Initialize the Google Translate API client
 const translate = new Translate({
@@ -12,18 +13,24 @@ const i18n = {
   locales: ['en', 'es', 'fr', 'de', 'it'],
 };
 
-async function translateText(text, targetLanguage) {
-  try {
-    const [translation] = await translate.translate(text, targetLanguage);
-    return translation;
-  } catch (error) {
-    console.error(`Error translating text to ${targetLanguage}:`, error);
-    return text;
+async function translateText(text, targetLanguage, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const [translation] = await translate.translate(text, targetLanguage);
+      return translation;
+    } catch (error) {
+      console.error(`Error translating text to ${targetLanguage} (attempt ${i + 1}):`, error);
+      if (i === retries - 1) {
+        console.error('Max retries reached. Returning original text.');
+        return text;
+      }
+      // Wait for a short time before retrying
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
   }
 }
 
 async function translateHtml(html, targetLanguage) {
-  const cheerio = require('cheerio');
   const $ = cheerio.load(html);
 
   async function translateElement(element) {
