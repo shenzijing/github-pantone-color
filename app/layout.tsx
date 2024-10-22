@@ -6,8 +6,8 @@ import { Layout } from '@/components/Layout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Pantone Colors Showcase',
-  description: 'A beautiful display of Pantone colors',
+  title: 'Pantone Colors Chart | Complete Collection of Pantone Colors',
+  description: 'Explore the complete Pantone color chart with codes and swatches. Find the perfect colors with Pantone, including RGB and HEX values for design and printing projects.',
 };
 
 export default function RootLayout({
