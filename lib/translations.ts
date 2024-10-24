@@ -89,7 +89,9 @@ export const translations = {
     "of": "of",
     "colors": "colors",
     "previous": "previous",
-    "next": "next"
+    "next": "next",
+    "enterPage": "Enter page",
+    "goToPage": "Go",
   },
   "es": {
     "home": "Hogar",
@@ -182,6 +184,8 @@ export const translations = {
     "colors": "colores",
     "previous": "anterior",
     "next": "siguiente",
+    "enterPage": "Ir a página",
+    "goToPage": "Ir",
   },
   "fr": {
     "home": "Maison",
@@ -274,7 +278,8 @@ export const translations = {
     "colors": "couleurs",
     "previous": "précédent",
     "next": "suivant",
-
+    "enterPage": "Aller à la page",
+    "goToPage": "Aller",
   },
   "de": {
     "home": "Heim",
@@ -367,6 +372,8 @@ export const translations = {
     "colors": "Farben",
     "previous": "vorherig",
     "next": "nächste",
+    "enterPage": "Zur Seite",
+    "goToPage": "Los",
   },
   "it": {
     "home": "Casa",
@@ -458,7 +465,9 @@ export const translations = {
     "of": "di",
     "colors": "colori",
     "previous": "precedente",
-    "next": "successivo"
+    "next": "successivo",
+    "enterPage": "Vai alla pagina",
+    "goToPage": "Vai"
   }
 };
 

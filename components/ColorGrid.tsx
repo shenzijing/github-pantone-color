@@ -44,6 +44,7 @@ const CustomPaginationNext = ({ disabled, ...props }: ComponentProps<typeof Pagi
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [jumpToPage, setJumpToPage] = useState('');
   const pathname = usePathname();
   const pathParts = pathname.split('/').filter(Boolean);
   const currentLang = i18n.locales.includes(pathParts[0]) ? pathParts[0] : i18n.defaultLocale;
@@ -69,10 +70,19 @@ export function ColorGrid({ colors }: ColorGridProps) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Handle page jump
+  const handleJumpToPage = () => {
+    const pageNumber = parseInt(jumpToPage);
+    if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+      handlePageChange(pageNumber);
+      setJumpToPage('');
+    }
+  };
+
   // Handle search
   const handleSearch = (value: string) => {
     setSearchTerm(value);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1);
   };
 
   // Generate page numbers to display
@@ -115,38 +125,62 @@ export function ColorGrid({ colors }: ColorGridProps) {
 
       {totalPages > 1 && (
         <div className="mt-8">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <CustomPaginationPrevious
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  aria-label={t('previous')}
-                />
-              </PaginationItem>
-
-              {getPageNumbers().map((page) => (
-                <PaginationItem key={page}>
-                  <PaginationLink
-                    onClick={() => handlePageChange(page)}
-                    isActive={page === currentPage}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <CustomPaginationPrevious
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
                   >
-                    {page}
-                  </PaginationLink>
+                    {t('previous')}
+                  </CustomPaginationPrevious>
                 </PaginationItem>
-              ))}
 
-              <PaginationItem>
-                <CustomPaginationNext
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  aria-label={t('next')}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+                {getPageNumbers().map((page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      onClick={() => handlePageChange(page)}
+                      isActive={page === currentPage}
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
 
-          <p className="text-center text-sm text-gray-500 mt-2">
+                <PaginationItem>
+                  <CustomPaginationNext
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                  >
+                    {t('next')}
+                  </CustomPaginationNext>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                min={1}
+                max={totalPages}
+                value={jumpToPage}
+                onChange={(e) => setJumpToPage(e.target.value)}
+                placeholder={t('enterPage')}
+                className="w-24"
+                onKeyDown={(e) => e.key === 'Enter' && handleJumpToPage()}
+              />
+              <Button
+                variant="outline"
+                onClick={handleJumpToPage}
+                disabled={!jumpToPage || parseInt(jumpToPage) < 1 || parseInt(jumpToPage) > totalPages}
+              >
+                {t('goToPage')}
+              </Button>
+            </div>
+          </div>
+
+          <p className="text-center text-sm text-gray-500">
             {t('showing')} {startIndex + 1}-{Math.min(endIndex, filteredColors.length)} {t('of')} {filteredColors.length} {t('colors')}
           </p>
         </div>
