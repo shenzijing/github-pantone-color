@@ -1,64 +1,57 @@
-import { ColorGrid } from '@/components/ColorGrid';
-import { getPantoneColors } from '@/lib/colors';
-import { i18n } from '@/lib/i18n';
 import { useTranslation } from '@/hooks/useTranslation';
+import { i18n } from '@/lib/i18n';
 
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
 }
 
-export default async function Home({ params }: { params: { lang: string } }) {
-  const colors = await getPantoneColors();
+export default function TermsOfServicePage({ params }: { params: { lang: string } }) {
   const { t } = useTranslation(params.lang);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-4">{t('pantoneColorsChart')}</h1>
-      <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-        {t('exploreColors')}
-      </p>
-      <ColorGrid colors={colors} />
-      
-      <div className="mt-12">
-        <h2 className="text-3xl font-bold mb-4">{t('whatIsPantone')}</h2>
-        <p className="mb-4">
-          {t('pantoneDescription')}
-        </p>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold mb-8">{t('termsOfService')}</h1>
+      <p className="mb-4">{t('lastUpdated')}</p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">{t('howToUsePantone')}</h2>
-        <p className="mb-4">
-          {t('pantoneUsage')}
-        </p>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('termsAcceptance')}</h2>
+      <p className="mb-4">{t('termsAcceptanceContent')}</p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">{t('pantoneColorOfTheYear')}</h2>
-        <p className="mb-4">
-          {t('colorOfTheYearDescription')}
-        </p>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('serviceDesc')}</h2>
+      <p className="mb-4">{t('serviceDescContent')}</p>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">{t('pantoneVsOthers')}</h2>
-        <p className="mb-4">
-          {t('colorSystemsComparison')}
-        </p>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('useLicense')}</h2>
+      <p className="mb-4">{t('useLicenseContent')}</p>
+      <ul className="list-disc pl-8 mb-4">
+        <li>{t('licenseList1')}</li>
+        <li>{t('licenseList2')}</li>
+        <li>{t('licenseList3')}</li>
+        <li>{t('licenseList4')}</li>
+        <li>{t('licenseList5')}</li>
+      </ul>
 
-        <h2 className="text-2xl font-bold mt-8 mb-4">{t('faqs')}</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          <li><strong>{t('faqPurpose')}</strong><br />{t('faqPurposeAnswer')}</li>
-          <li><strong>{t('faqBranding')}</strong><br />{t('faqBrandingAnswer')}</li>
-          <li><strong>{t('faqPMS')}</strong><br />{t('faqPMSAnswer')}</li>
-          <li><strong>{t('faqColorOfYear')}</strong><br />{t('faqColorOfYearAnswer')}</li>
-          <li><strong>{t('faqWebDesign')}</strong><br />{t('faqWebDesignAnswer')}</li>
-        </ul>
-      </div>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('termsDisclaimer')}</h2>
+      <p className="mb-4">{t('termsDisclaimerContent1')}</p>
+      <p className="mb-4">{t('termsDisclaimerContent2')}</p>
 
-      <div className="mt-12 text-sm text-gray-600 border-t pt-4">
-        <h2 className="font-semibold mb-2">{t('disclaimer')}</h2>
-        <p>
-          {t('disclaimerContent')}
-        </p>
-      </div>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('limitations')}</h2>
+      <p className="mb-4">{t('limitationsContent')}</p>
+
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('accuracy')}</h2>
+      <p className="mb-4">{t('accuracyContent')}</p>
+
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('links')}</h2>
+      <p className="mb-4">{t('linksContent')}</p>
+
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('modifications')}</h2>
+      <p className="mb-4">{t('modificationsContent')}</p>
+
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('governingLaw')}</h2>
+      <p className="mb-4">{t('governingLawContent')}</p>
+
+      <h2 className="text-2xl font-semibold mt-6 mb-4">{t('contactUs')}</h2>
+      <p className="mb-4">{t('contactUsContent')}</p>
     </div>
   );
 }
 
-// This ensures the page is statically generated
 export const dynamic = 'force-static';
