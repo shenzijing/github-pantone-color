@@ -15,12 +15,29 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { ComponentProps } from 'react';
 
 interface ColorGridProps {
   colors: PantoneColor[];
 }
 
 const COLORS_PER_PAGE = 100;
+
+const CustomPaginationPrevious = ({ disabled, ...props }: ComponentProps<typeof PaginationPrevious> & { disabled?: boolean }) => (
+  <PaginationPrevious
+    {...props}
+    className={`${props.className || ''} ${disabled ? 'pointer-events-none opacity-50' : ''}`}
+    onClick={disabled ? undefined : props.onClick}
+  />
+);
+
+const CustomPaginationNext = ({ disabled, ...props }: ComponentProps<typeof PaginationNext> & { disabled?: boolean }) => (
+  <PaginationNext
+    {...props}
+    className={`${props.className || ''} ${disabled ? 'pointer-events-none opacity-50' : ''}`}
+    onClick={disabled ? undefined : props.onClick}
+  />
+);
 
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -96,7 +113,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
           <Pagination>
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious
+                <CustomPaginationPrevious
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 />
@@ -114,9 +131,9 @@ export function ColorGrid({ colors }: ColorGridProps) {
               ))}
 
               <PaginationItem>
-                <PaginationNext
-                  onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
-                  className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                <CustomPaginationNext
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
                 />
               </PaginationItem>
             </PaginationContent>
