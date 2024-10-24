@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
 import { i18n } from '@/lib/i18n';
 import { useTranslation } from '@/hooks/useTranslation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Color Insights & Trends | Pantone Colors Blog',
+  description: 'Discover the latest color trends, design inspiration, and expert insights about Pantone colors. Learn about color psychology, industry applications, and color forecasting.',
+};
 
 export function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
@@ -38,5 +44,4 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
   );
 }
 
-// This ensures the page is statically generated
 export const dynamic = 'force-static';
