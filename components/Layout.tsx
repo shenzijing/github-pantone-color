@@ -55,7 +55,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </div>
         <div className="bg-gray-200 py-2 text-center text-sm">
           <p>{t('copyright')}</p>
-          <p>{t('contactUs')}: <a href="mailto:info@pantonecolors.com" className="text-blue-600 hover:underline">info@pantonecolors.com</a></p>
+          <p>{t('contactUs')}: <a href="mailto:info@pantonecolors.com" className="text-blue-600 hover:underline">info@pantonecolors.net</a></p>
         </div>
       </footer>
     </div>
