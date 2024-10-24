@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { ColorCard } from '@/components/ColorCard';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { PantoneColor } from '@/lib/colors';
 import { useTranslation } from '@/hooks/useTranslation';
 import {
@@ -16,6 +16,8 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { ComponentProps } from 'react';
+import { usePathname } from 'next/navigation';
+import { i18n } from '@/lib/i18n';
 
 interface ColorGridProps {
   colors: PantoneColor[];
@@ -42,7 +44,10 @@ const CustomPaginationNext = ({ disabled, ...props }: ComponentProps<typeof Pagi
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
+  const pathname = usePathname();
+  const pathParts = pathname.split('/').filter(Boolean);
+  const currentLang = i18n.locales.includes(pathParts[0]) ? pathParts[0] : i18n.defaultLocale;
+  const { t } = useTranslation(currentLang);
 
   // Memoize filtered colors to prevent unnecessary recalculations
   const filteredColors = useMemo(() => {
@@ -97,7 +102,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
           value={searchTerm}
           onChange={(e) => handleSearch(e.target.value)}
         />
-        <Button variant="outline">
+        <Button variant="outline" aria-label={t('search')}>
           <Search className="h-4 w-4" />
         </Button>
       </div>
@@ -116,6 +121,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
                 <CustomPaginationPrevious
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
+                  aria-label={t('previous')}
                 />
               </PaginationItem>
 
@@ -134,6 +140,7 @@ export function ColorGrid({ colors }: ColorGridProps) {
                 <CustomPaginationNext
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
+                  aria-label={t('next')}
                 />
               </PaginationItem>
             </PaginationContent>

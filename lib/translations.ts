@@ -88,6 +88,8 @@ export const translations = {
     "showing": "Showing",
     "of": "of",
     "colors": "colors",
+    "previous": "previous",
+    "next": "next"
   },
   "es": {
     "home": "Hogar",
@@ -178,7 +180,8 @@ export const translations = {
     "showing": "Mostrando",
     "of": "de",
     "colors": "colores",
-
+    "previous": "anterior",
+    "next": "siguiente",
   },
   "fr": {
     "home": "Maison",
@@ -266,9 +269,11 @@ export const translations = {
     "governingLawContent": "Ces termes et conditions sont régis et interprétés conformément aux lois des États-Unis et vous vous soumettez irrévocablement à la juridiction exclusive des tribunaux de cet État ou de ce lieu.",
     "termsContactUsSection": "10. Informations de Contact",
     "termsContactUsContent": "Si vous avez des questions concernant ces Conditions, veuillez nous contacter à info@pantonecolors.net.",
-    "showing": "Affichage",
-    "of": "sur",
+    "showing": "présentation",
+    "of": "de",
     "colors": "couleurs",
+    "previous": "précédent",
+    "next": "suivant",
 
   },
   "de": {
@@ -357,9 +362,11 @@ export const translations = {
     "governingLawContent": "Diese Bedingungen und Konditionen unterliegen den Gesetzen der Vereinigten Staaten und werden in Übereinstimmung mit diesen ausgelegt, und Sie unterwerfen sich unwiderruflich der ausschließlichen Zuständigkeit der Gerichte dieses Staates oder Ortes.",
     "termsContactUsSection": "10. Kontaktinformationen",
     "termsContactUsContent": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter info@pantonecolors.net.",
-    "showing": "Anzeige",
+    "showing": "Darstellung",
     "of": "von",
     "colors": "Farben",
+    "previous": "vorherig",
+    "next": "nächste",
   },
   "it": {
     "home": "Casa",
@@ -447,9 +454,11 @@ export const translations = {
     "governingLawContent": "Questi termini e condizioni sono regolati e interpretati in conformità con le leggi degli Stati Uniti, e tu accetti irrevocabilmente la giurisdizione esclusiva dei tribunali di quello Stato o località.",
     "termsContactUsSection": "10. Informazioni di Contatto",
     "termsContactUsContent": "Se hai domande riguardanti questi Termini, ti preghiamo di contattarci all'indirizzo info@pantonecolors.net.",
-    "showing": "Anzeige",
-    "of": "von",
-    "colors": "Farben",
+    "showing": "mostra",
+    "of": "di",
+    "colors": "colori",
+    "previous": "precedente",
+    "next": "successivo"
   }
 };
 
