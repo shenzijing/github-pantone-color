@@ -5,8 +5,18 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Color Insights & Trends | Pantone Colors Blog',
+  title: 'Color Insights & Trends Blog',
   description: 'Discover the latest color trends, design inspiration, and expert insights about Pantone colors. Learn about color psychology, industry applications, and color forecasting.',
+  openGraph: {
+    title: 'Color Insights & Trends Blog | Pantone Colors',
+    description: 'Discover the latest color trends, design inspiration, and expert insights about Pantone colors.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Color Insights & Trends Blog | Pantone Colors',
+    description: 'Discover the latest color trends, design inspiration, and expert insights about Pantone colors.',
+  },
 };
 
 export function generateStaticParams() {

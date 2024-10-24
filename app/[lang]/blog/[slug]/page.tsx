@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Pantone Colors Blog`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
-      title: post.title,
+      title: `${post.title} | Pantone Colors Blog`,
       description: post.excerpt,
       type: 'article',
       publishedTime: post.date,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: `${post.title} | Pantone Colors Blog`,
       description: post.excerpt,
     },
   };
