@@ -84,7 +84,10 @@ export const translations = {
     "governingLaw": "9. Governing Law",
     "governingLawContent": "These terms and conditions are governed by and construed in accordance with the laws of the United States and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.",
     "termsContactUsSection": "10. Contact Information",
-    "termsContactUsContent": "If you have any questions about these Terms, please contact us at info@pantonecolors.net."
+    "termsContactUsContent": "If you have any questions about these Terms, please contact us at info@pantonecolors.net.",
+    "showing": "Showing",
+    "of": "of",
+    "colors": "colors",
   },
   "es": {
     "home": "Hogar",
@@ -171,7 +174,10 @@ export const translations = {
     "governingLaw": "9. Ley Aplicable",
     "governingLawContent": "Estos términos y condiciones se rigen y se interpretan de acuerdo con las leyes de los Estados Unidos y usted se somete irrevocablemente a la jurisdicción exclusiva de los tribunales en ese Estado o ubicación.",
     "termsContactUsSection": "10. Información de Contacto",
-    "termsContactUsContent": "Si tiene alguna pregunta sobre estos Términos, contáctenos en info@pantonecolors.net."
+    "termsContactUsContent": "Si tiene alguna pregunta sobre estos Términos, contáctenos en info@pantonecolors.net.",
+    "showing": "Mostrando",
+    "of": "de",
+    "colors": "colores",
 
   },
   "fr": {
@@ -259,7 +265,10 @@ export const translations = {
     "governingLaw": "9. Droit Applicable",
     "governingLawContent": "Ces termes et conditions sont régis et interprétés conformément aux lois des États-Unis et vous vous soumettez irrévocablement à la juridiction exclusive des tribunaux de cet État ou de ce lieu.",
     "termsContactUsSection": "10. Informations de Contact",
-    "termsContactUsContent": "Si vous avez des questions concernant ces Conditions, veuillez nous contacter à info@pantonecolors.net."
+    "termsContactUsContent": "Si vous avez des questions concernant ces Conditions, veuillez nous contacter à info@pantonecolors.net.",
+    "showing": "Affichage",
+    "of": "sur",
+    "colors": "couleurs",
 
   },
   "de": {
@@ -347,8 +356,10 @@ export const translations = {
     "governingLaw": "9. Anwendbares Recht",
     "governingLawContent": "Diese Bedingungen und Konditionen unterliegen den Gesetzen der Vereinigten Staaten und werden in Übereinstimmung mit diesen ausgelegt, und Sie unterwerfen sich unwiderruflich der ausschließlichen Zuständigkeit der Gerichte dieses Staates oder Ortes.",
     "termsContactUsSection": "10. Kontaktinformationen",
-    "termsContactUsContent": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter info@pantonecolors.net."
-
+    "termsContactUsContent": "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter info@pantonecolors.net.",
+    "showing": "Anzeige",
+    "of": "von",
+    "colors": "Farben",
   },
   "it": {
     "home": "Casa",
@@ -435,8 +446,10 @@ export const translations = {
     "governingLaw": "9. Legge Applicabile",
     "governingLawContent": "Questi termini e condizioni sono regolati e interpretati in conformità con le leggi degli Stati Uniti, e tu accetti irrevocabilmente la giurisdizione esclusiva dei tribunali di quello Stato o località.",
     "termsContactUsSection": "10. Informazioni di Contatto",
-    "termsContactUsContent": "Se hai domande riguardanti questi Termini, ti preghiamo di contattarci all'indirizzo info@pantonecolors.net."
-
+    "termsContactUsContent": "Se hai domande riguardanti questi Termini, ti preghiamo di contattarci all'indirizzo info@pantonecolors.net.",
+    "showing": "Anzeige",
+    "of": "von",
+    "colors": "Farben",
   }
 };
 
