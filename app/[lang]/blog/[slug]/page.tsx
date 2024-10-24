@@ -17,20 +17,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title = post.translations?.[params.lang]?.title || post.title;
+  const excerpt = post.translations?.[params.lang]?.excerpt || post.excerpt;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: title,
+    description: excerpt,
     openGraph: {
-      title: `${post.title} | Pantone Colors Blog`,
-      description: post.excerpt,
+      title: title,
+      description: excerpt,
       type: 'article',
       publishedTime: post.date,
       authors: ['Pantone Colors Team'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${post.title} | Pantone Colors Blog`,
-      description: post.excerpt,
+      title: title,
+      description: excerpt,
     },
   };
 }
@@ -52,11 +55,14 @@ export default function BlogPost({ params }: Props) {
     notFound();
   }
 
+  const title = post.translations?.[params.lang]?.title || post.title;
+  const content = post.translations?.[params.lang]?.content || post.content;
+
   return (
     <article className="max-w-2xl mx-auto">
-      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+      <h1 className="text-4xl font-bold mb-4">{title}</h1>
       <p className="text-gray-600 mb-4">{post.date}</p>
-      <div className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: content }} />
     </article>
   );
 }
