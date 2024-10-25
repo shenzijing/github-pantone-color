@@ -1,0 +1,14 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pantonecolors.net/sitemap.xml
+
+# Disallow crawling of specific paths (uncomment if needed)
+# Disallow: /private/
+# Disallow: /admin/
+# Disallow: /temp/
+
+# Crawl-delay directive (uncomment and adjust if needed)
+# Crawl-delay: 10
