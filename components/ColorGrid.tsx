@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { ColorCard } from '@/components/ColorCard';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PantoneColor } from '@/lib/colors';
 import { useTranslation } from '@/hooks/useTranslation';
 import {
@@ -12,10 +12,7 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
-import { ComponentProps } from 'react';
 import { usePathname } from 'next/navigation';
 import { i18n } from '@/lib/i18n';
 
@@ -24,22 +21,6 @@ interface ColorGridProps {
 }
 
 const COLORS_PER_PAGE = 100;
-
-const CustomPaginationPrevious = ({ disabled, ...props }: ComponentProps<typeof PaginationPrevious> & { disabled?: boolean }) => (
-  <PaginationPrevious
-    {...props}
-    className={`${props.className || ''} ${disabled ? 'pointer-events-none opacity-50' : ''}`}
-    onClick={disabled ? undefined : props.onClick}
-  />
-);
-
-const CustomPaginationNext = ({ disabled, ...props }: ComponentProps<typeof PaginationNext> & { disabled?: boolean }) => (
-  <PaginationNext
-    {...props}
-    className={`${props.className || ''} ${disabled ? 'pointer-events-none opacity-50' : ''}`}
-    onClick={disabled ? undefined : props.onClick}
-  />
-);
 
 export function ColorGrid({ colors }: ColorGridProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,7 +31,6 @@ export function ColorGrid({ colors }: ColorGridProps) {
   const currentLang = i18n.locales.includes(pathParts[0]) ? pathParts[0] : i18n.defaultLocale;
   const { t } = useTranslation(currentLang);
 
-  // Memoize filtered colors to prevent unnecessary recalculations
   const filteredColors = useMemo(() => {
     if (!searchTerm.trim()) return colors;
     return colors.filter(color =>
@@ -58,19 +38,16 @@ export function ColorGrid({ colors }: ColorGridProps) {
     );
   }, [colors, searchTerm]);
 
-  // Calculate pagination values
   const totalPages = Math.ceil(filteredColors.length / COLORS_PER_PAGE);
   const startIndex = (currentPage - 1) * COLORS_PER_PAGE;
   const endIndex = startIndex + COLORS_PER_PAGE;
   const currentColors = filteredColors.slice(startIndex, endIndex);
 
-  // Handle page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Handle page jump
   const handleJumpToPage = () => {
     const pageNumber = parseInt(jumpToPage);
     if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
@@ -79,13 +56,11 @@ export function ColorGrid({ colors }: ColorGridProps) {
     }
   };
 
-  // Handle search
   const handleSearch = (value: string) => {
     setSearchTerm(value);
     setCurrentPage(1);
   };
 
-  // Generate page numbers to display
   const getPageNumbers = () => {
     const pages = [];
     const maxVisiblePages = 5;
@@ -124,17 +99,21 @@ export function ColorGrid({ colors }: ColorGridProps) {
       </div>
 
       {totalPages > 1 && (
-        <div className="mt-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <Pagination>
+        <div className="mt-8 flex flex-col items-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4 w-full max-w-2xl">
+            <Pagination className="flex-1 flex justify-center">
               <PaginationContent>
                 <PaginationItem>
-                  <CustomPaginationPrevious
+                  <Button
+                    variant="outline"
+                    size="icon"
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
+                    className="h-9 w-9"
+                    aria-label={t('previous')}
                   >
-                    {t('previous')}
-                  </CustomPaginationPrevious>
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
                 </PaginationItem>
 
                 {getPageNumbers().map((page) => (
@@ -149,31 +128,36 @@ export function ColorGrid({ colors }: ColorGridProps) {
                 ))}
 
                 <PaginationItem>
-                  <CustomPaginationNext
+                  <Button
+                    variant="outline"
+                    size="icon"
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
+                    className="h-9 w-9"
+                    aria-label={t('next')}
                   >
-                    {t('next')}
-                  </CustomPaginationNext>
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 min-w-[200px] justify-center">
               <Input
                 type="number"
                 min={1}
                 max={totalPages}
                 value={jumpToPage}
                 onChange={(e) => setJumpToPage(e.target.value)}
-                placeholder={t('enterPage')}
-                className="w-24"
+                placeholder={`1-${totalPages}`}
+                className="w-20"
                 onKeyDown={(e) => e.key === 'Enter' && handleJumpToPage()}
               />
               <Button
                 variant="outline"
                 onClick={handleJumpToPage}
                 disabled={!jumpToPage || parseInt(jumpToPage) < 1 || parseInt(jumpToPage) > totalPages}
+                className="whitespace-nowrap"
               >
                 {t('goToPage')}
               </Button>
