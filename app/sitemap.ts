@@ -14,7 +14,7 @@ export default async function sitemap() {
 
   const blogRoutes = blogPosts.flatMap((post) =>
     i18n.locales.map((lang) => ({
-      url: `${baseUrl}/${lang}/blog/${post.slug}`,
+      url: `${baseUrl}${lang === 'en' ? '' : `/${lang}`}/blog/${post.slug}`,
       lastModified: new Date().toISOString(),
     }))
   );
