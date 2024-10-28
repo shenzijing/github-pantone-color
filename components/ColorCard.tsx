@@ -53,7 +53,7 @@ export function ColorCard({ color }: ColorCardProps) {
           className={cn("h-48 flex flex-col justify-end p-2", textColor)}
           style={{ backgroundColor: color.hex }}
         >
-          <p className="font-semibold mb-2">{color.name}</p>
+          <h4 className="font-semibold mb-2">{color.name}</h4>
           <div className="flex items-center justify-between">
             <p className="text-sm">HEX: {color.hex}</p>
             <CopyButton value={color.hex} type="HEX" />
